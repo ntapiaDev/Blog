@@ -9,4 +9,102 @@
 html {
   font-family: 'Montserrat', sans-serif;
 }
+
+section {
+  width: 100%;
+  max-width: 1480px;
+}
+
+header {
+  background: url("../img/background.jpg") center;
+  background-size: cover;
+  color: #FFF;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+header section {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+header section nav {
+  margin-top: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header section nav p {
+  font-size: 2em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+header section nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header section nav ul li {
+  list-style: none;
+  text-transform: uppercase;
+  font-size: .9rem;
+  letter-spacing: .1rem;
+  font-weight: 200;
+}
+
+header section nav ul li a {
+  padding: 1em;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+}
+
+header section .title {
+  text-align: center;
+  margin: auto;
+}
+
+header section .title h1 {
+  margin-bottom: .2em;
+  text-transform: uppercase;
+  font-size: 5rem;
+  letter-spacing: .2rem;
+  font-weight: 500;
+}
+
+header section .title p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.25rem;
+  font-weight: 200;
+}
+
+header section .title p:nth-child(3) {
+  margin-top: .2em;
+}
+
+header section .title p a {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+main {
+  min-height: 100vh;
+}
 /*# sourceMappingURL=style.css.map */
