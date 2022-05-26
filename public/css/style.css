@@ -93,13 +93,16 @@ header section nav ul li a {
   text-decoration: none;
 }
 
+header section nav ul li a.home {
+  color: white;
+}
+
 header section nav .fixed-nav {
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  padding-top: 2em;
-  padding-bottom: 1em;
+  padding: 1em 0;
   border-bottom: 1px solid rgba(70, 72, 74, 0.5);
   background-color: white;
   display: -webkit-box;
@@ -181,7 +184,7 @@ main section {
 }
 
 main section h2 {
-  margin: 3em 0 .5em;
+  margin: 2.5em 0 .5em;
   color: #46484a;
   font-size: 2.8rem;
   font-weight: 500;
@@ -202,6 +205,10 @@ main section ul li {
   letter-spacing: .1rem;
   font-weight: 300;
   cursor: pointer;
+}
+
+main section ul li:nth-child(1) {
+  color: #e8ba2d;
 }
 
 main section .grid {
