@@ -1,27 +1,73 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Welcome{% endblock %}
+{% block title %}Destinations{% endblock %}
 
 {% block body %}
     <header>
-        <section>
+        <section id="home">
             <nav>
-                <p>Mon blog en POO</p>
+                <p>Destinations</p>
                 <ul>
-                    <li><a href="">Accueil</a></li>
-                    <li><a href="">Articles</a></li>
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
                     <li><a href="">A propos</a></li>
                     <li><a href="">Contact</a></li>
                 </ul>
             </nav>
             <div class="title">
-                <h1>Un site en POO</h1>
+                <h1>We show, you go !</h1>
                 <p>Réalisé from scratch en PHP orienté objet, avec autoload PSR-4, Twig, SASS, et un peu de JavaScript.</p>
                 <p>Inspiré du template <a href="https://medialoot.com/preview/sundown/index.html" target="_blank">Sundown</a> de Bootstrap 4.</p>
             </div>
         </section>
     </header>
+
     <main>
-        <section></section>
+        <section id="destinations">
+            <h2>Nos destinations :</h2>
+            <ul>
+                <li>Tout voir</li>
+                <li>Forêt</li>
+                <li>Montagne</li>
+                <li>Lac</li>
+                <li>Océan</li>
+            </ul>
+            <div class="grid">
+                <article>
+                    <img src="/img/forest1.jpg" alt="">
+                    <div class="img-hover">
+                        <h3>Forest 1</h3>
+                        <p>Une magnifique foret</p>
+                        <a href="">ZOOM</a>
+                    </div>
+                </article>
+                <article>
+                    <img src="/img/mountain1.jpg" alt="">
+                    <div class="img-hover">
+                        <h3>Mountain 1</h3>
+                        <p>Une magnifique montagne</p>
+                        <a href="">ZOOM</a>
+                    </div>
+                </article>
+                <article>
+                    <img src="/img/lake1.jpg" alt="">
+                </article>
+                <article>
+                    <img src="/img/ocean1.jpg" alt="">
+                </article>
+                <article>
+                    <img src="/img/forest2.jpg" alt="">
+                </article>
+                <article>
+                    <img src="/img/mountain2.jpg" alt="">
+                </article>
+                <article>
+                    <img src="/img/lake2.jpg" alt="">
+                </article>
+                <article>
+                    <img src="/img/ocean2.jpg" alt="">
+                </article>
+            </div>
+        </section>
     </main>
 {% endblock %}

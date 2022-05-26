@@ -1,4 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
+main section .grid article .img-hover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -10,6 +22,10 @@ html {
   font-family: 'Montserrat', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 section {
   width: 100%;
   max-width: 1480px;
@@ -18,7 +34,7 @@ section {
 header {
   background: url("../img/background.jpg") center;
   background-size: cover;
-  color: #FFF;
+  color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -28,7 +44,7 @@ header {
 }
 
 header section {
-  height: 100vh;
+  min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -105,6 +121,130 @@ header section .title p a {
 }
 
 main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main section {
   min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main section h2 {
+  margin: 1.5em 0 .5em;
+  color: #46484a;
+  font-size: 2.8rem;
+  font-weight: 500;
+}
+
+main section ul {
+  margin-bottom: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main section ul li {
+  padding: 1em;
+  list-style: none;
+  color: #696b6e;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+main section .grid {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 2em;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+}
+
+main section .grid article {
+  margin: .1em;
+  position: relative;
+  overflow: hidden;
+}
+
+main section .grid article:hover * {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+main section .grid article:hover .img-hover {
+  opacity: 1;
+}
+
+main section .grid article img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+main section .grid article .img-hover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+  opacity: 0;
+}
+
+main section .grid article .img-hover h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+main section .grid article .img-hover p {
+  margin: 1em 0 1.5em;
+  font-size: .9rem;
+  font-weight: 200;
+}
+
+main section .grid article .img-hover a {
+  padding: .5em .7em;
+  border: 1px solid white;
+  border-radius: 2em;
+  color: white;
+  font-size: .7rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: .2rem;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+main section .grid article .img-hover a:hover {
+  background-color: white;
+  color: #46484a;
 }
 /*# sourceMappingURL=style.css.map */
