@@ -108,6 +108,7 @@ header section nav .fixed-nav {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  display: none;
   z-index: 10;
 }
 
