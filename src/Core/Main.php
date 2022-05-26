@@ -17,6 +17,7 @@ Class Main
             $uri = substr($uri, 0, -1);
             http_response_code(301);
             header('Location: '.$uri);
+            exit; //Solves the problem?
         }
 
         //On gère les paramètres de l'URL
