@@ -100,13 +100,21 @@ header {
 
 main {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 
     section {
-        min-height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;
+        //Destinations
+        &:nth-child(1) {
+            min-height: 100vh;
+        }
+        //Contact
+        &:nth-child(2) {
+            min-height: 75vh;
+        }
 
         h2 {
             margin: 2.5em 0 .5em;
@@ -201,5 +209,101 @@ main {
                 }
             }
         }
+
+        //Contact
+        .contact-container {
+            width: 75%;
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid green;
+
+            form {
+                width: 67%;
+                border: 1px solid blue;
+                display: grid;
+                input:nth-child(2) {
+                    grid-area: 2/1/2/2;
+                }
+                input:nth-child(3) {
+                    grid-area: 2/2/2/3;
+                }
+                textarea {
+                    grid-area: 3/1/3/3;
+                }
+                button {
+                    grid-area: 4/1/4/2;
+                }
+            }
+
+            .contact-info {
+                width: 33%;
+                border: 1px solid red;
+            }
+
+            h3 {
+                border: 1px solid blue;
+                margin: 1em 0;
+                color: rgb(70, 72, 74);
+                font-size: 2rem;
+                font-weight: 500;
+            }
+
+            h4 {
+                margin: 1em 0;
+                color: rgb(70, 72, 74);
+                font-size: 1rem;
+                font-weight: 700;
+                text-transform: uppercase;
+            }
+
+            p {
+                color: rgb(105, 107, 110);
+                font-size: .9rem;
+                font-weight: 200;
+
+                a {
+                    color: rgb(232, 186, 45);
+                    text-decoration: none;
+                    &:hover {
+                        color: rgb(0, 86, 179);
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            ul li {
+                width: 1em;
+                height: 1em;
+                margin: 1em .2em;
+                padding: .7em;
+                border: .05em solid rgb(223, 225, 229);
+                border-radius: 50%;
+                color: rgb(105, 107, 110);
+                font-size: 1.4em;
+                @extend %flex-center;
+
+                span {
+                    margin-left: .05em;
+                }
+
+                &:hover {
+                    color: rgb(232, 186, 45);
+                    border-color: rgb(232, 186, 45);
+                }
+            }
+        }
+
+        
     }    
+}
+
+footer {
+    background-color: rgb(37, 38, 41);
+    color: rgb(160, 160, 160);
+    display: flex;
+    justify-content: center;
+
+    section {
+        min-height: 25vh;
+    }
 }
