@@ -18,7 +18,7 @@ main section .grid article .img-hover, main section .contact-container ul li {
           box-sizing: border-box;
 }
 
-html {
+html, input, textarea {
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -308,54 +308,80 @@ main section .contact-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  border: 1px solid green;
 }
 
 main section .contact-container form {
   width: 67%;
-  border: 1px solid blue;
-  display: -ms-grid;
-  display: grid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+main section .contact-container form h3 {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+main section .contact-container form input {
+  width: calc(50% - 1em);
 }
 
 main section .contact-container form input:nth-child(2) {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  grid-area: 2/1/2/2;
-}
-
-main section .contact-container form input:nth-child(3) {
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 1;
-  grid-area: 2/2/2/3;
+  margin-right: 2em;
 }
 
 main section .contact-container form textarea {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
-  grid-area: 3/1/3/3;
+  width: 100%;
+}
+
+main section .contact-container form input, main section .contact-container form textarea {
+  padding: 1em;
+  border: 1px solid #dfe1e5;
+  border-radius: .3rem;
+  font-size: .9rem;
+  color: #696b6e;
+}
+
+main section .contact-container form input:focus, main section .contact-container form textarea:focus {
+  border-color: #e8ba2d;
+  outline: none;
 }
 
 main section .contact-container form button {
-  -ms-grid-row: 4;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  grid-area: 4/1/4/2;
+  padding: .75rem 1.5rem;
+  border: 1px solid #e8ba2d;
+  border-radius: 2em;
+  background-color: #e8ba2d;
+  color: white;
+  font-size: .9rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: .2rem;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
+main section .contact-container form button:hover {
+  cursor: pointer;
+  background-color: #d5a523;
 }
 
 main section .contact-container .contact-info {
   width: 33%;
-  border: 1px solid red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 main section .contact-container h3 {
-  border: 1px solid blue;
   margin: 1em 0;
   color: #46484a;
   font-size: 2rem;
@@ -363,7 +389,7 @@ main section .contact-container h3 {
 }
 
 main section .contact-container h4 {
-  margin: 1em 0;
+  margin: 2em 0 1em;
   color: #46484a;
   font-size: 1rem;
   font-weight: 700;
@@ -389,7 +415,7 @@ main section .contact-container p a:hover {
 main section .contact-container ul li {
   width: 1em;
   height: 1em;
-  margin: 1em .2em;
+  margin: 1em .4em 1em 0em;
   padding: .7em;
   border: 0.05em solid #dfe1e5;
   border-radius: 50%;

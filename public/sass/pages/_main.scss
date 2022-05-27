@@ -214,34 +214,66 @@ main {
         .contact-container {
             width: 75%;
             display: flex;
-            justify-content: space-between;
-            border: 1px solid green;
 
             form {
                 width: 67%;
-                border: 1px solid blue;
-                display: grid;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-start;
+
+                h3 {
+                    width: 100%;
+                    margin-bottom: 0;
+                }
+
+                input {
+                    width: calc(50% - 1em);
+                }
                 input:nth-child(2) {
-                    grid-area: 2/1/2/2;
+                    margin-right: 2em;
                 }
-                input:nth-child(3) {
-                    grid-area: 2/2/2/3;
-                }
+
                 textarea {
-                    grid-area: 3/1/3/3;
+                    width: 100%;
                 }
+
+                input, textarea {
+                    padding: 1em;
+                    border: 1px solid rgb(223, 225, 229);
+                    border-radius: .3rem;
+                    font-size: .9rem;
+                    color: rgb(105, 107, 110);
+                    &:focus {
+                        border-color: rgb(232, 186, 45);
+                        outline: none;
+                    }
+                }
+                
                 button {
-                    grid-area: 4/1/4/2;
+                    padding: .75rem 1.5rem;
+                    border: 1px solid rgb(232, 186, 45);
+                    border-radius: 2em;
+                    background-color: rgb(232, 186, 45);
+                    color: rgb(255, 255, 255);
+                    font-size: .9rem;
+                    text-transform: uppercase;
+                    font-weight: 400;
+                    letter-spacing: .2rem;
+                    transition: background-color 0.3s ease;
+                    &:hover {
+                        cursor: pointer;
+                        background-color: rgb(213, 165, 35);
+                    }
                 }
             }
 
             .contact-info {
                 width: 33%;
-                border: 1px solid red;
+                display: flex;
+                justify-content: center;
             }
 
             h3 {
-                border: 1px solid blue;
                 margin: 1em 0;
                 color: rgb(70, 72, 74);
                 font-size: 2rem;
@@ -249,7 +281,7 @@ main {
             }
 
             h4 {
-                margin: 1em 0;
+                margin: 2em 0 1em;
                 color: rgb(70, 72, 74);
                 font-size: 1rem;
                 font-weight: 700;
@@ -274,7 +306,7 @@ main {
             ul li {
                 width: 1em;
                 height: 1em;
-                margin: 1em .2em;
+                margin: 1em .4em 1em 0em;
                 padding: .7em;
                 border: .05em solid rgb(223, 225, 229);
                 border-radius: 50%;
