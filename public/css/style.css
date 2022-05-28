@@ -225,7 +225,6 @@ main section ul li:nth-child(1) {
 main section .grid {
   width: 100%;
   height: 100%;
-  margin-bottom: 2em;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
@@ -389,7 +388,7 @@ main section .contact-container h3 {
 }
 
 main section .contact-container h4 {
-  margin: 2em 0 1em;
+  margin: 1.5em 0;
   color: #46484a;
   font-size: 1rem;
   font-weight: 700;
@@ -424,7 +423,7 @@ main section .contact-container ul li {
 }
 
 main section .contact-container ul li span {
-  margin-left: .05em;
+  margin-left: .1em;
 }
 
 main section .contact-container ul li:hover {
@@ -443,7 +442,82 @@ footer {
           justify-content: center;
 }
 
+footer a {
+  color: #a0a0a0;
+}
+
 footer section {
   min-height: 25vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+footer section ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+footer section ul li {
+  list-style: none;
+  text-transform: uppercase;
+  font-size: .9rem;
+  letter-spacing: .1rem;
+  font-weight: 200;
+}
+
+footer section ul li a {
+  padding: 1em;
+  text-decoration: none;
+}
+
+footer section .divider {
+  width: 100%;
+  height: .05em;
+  background-color: #46484a;
+}
+
+footer section .container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+footer section .container p {
+  font-size: .9rem;
+  font-weight: 200;
+}
+
+footer section .container ul li {
+  width: 1em;
+  height: 1em;
+  margin: -1em .2em;
+  padding: .7em;
+  color: #f7f7f8;
+  font-size: 1.4em;
+}
+
+footer section .container ul li:nth-child(3) {
+  margin-left: .4em;
+}
+
+footer section .container ul li:hover {
+  cursor: pointer;
+  color: #e8ba2d;
 }
 /*# sourceMappingURL=style.css.map */
