@@ -77,6 +77,7 @@ header section nav ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
 }
 
 header section nav ul li {
@@ -91,10 +92,28 @@ header section nav ul li a {
   padding: 1em;
   color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
+  -webkit-transition: color 0.6s ease;
+  transition: color 0.6s ease;
 }
 
-header section nav ul li a.home {
+header section nav ul li a.active, header section nav ul li a.active-W {
   color: white;
+}
+
+header section nav ul li a.active-B {
+  color: black;
+}
+
+header section nav ul .indicator {
+  bottom: -1em;
+  left: 0;
+  position: absolute;
+  height: 4px;
+  width: 100px;
+  background-color: rgba(232, 186, 45, 0.75);
+  border-radius: 2px;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
 }
 
 header section nav .fixed-nav {
