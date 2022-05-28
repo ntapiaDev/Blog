@@ -38,17 +38,17 @@ header {
                         color: rgba(255, 255, 255, 0.5);
                         text-decoration: none;
                         transition: color 0.6s ease;
-                        &.active, &.active-W {
+                        &.active-light {
                             color: rgb(255, 255, 255);
                         }
-                        &.active-B {
+                        &.active-dark {
                             color: rgb(0, 0, 0);
                         }
                     }
                 }
 
                 .indicator {
-                    bottom: -1em;
+                    bottom: -1.2em;
                     left: 0;
                     position: absolute;
                     height: 4px;
@@ -373,6 +373,9 @@ footer {
                 a {
                     padding: 1em;
                     text-decoration: none;
+                    &:hover {
+                        color: rgb(232, 186, 45);
+                    }
                 }
             }
         }
@@ -391,6 +394,10 @@ footer {
             p {
                 font-size: .9rem;
                 font-weight: 200;
+
+                a:hover {
+                    color: rgb(232, 186, 45);
+                }
             }
 
             ul li {
