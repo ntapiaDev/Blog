@@ -10,9 +10,11 @@ section {
 #messages {
     width: 50%;
     padding: .45em;
-    border: 1px solid red;
-    color: red;
+    background-color: rgb(248, 215, 218);
+    border: 1px solid rgb(245, 198, 203);
+    border-radius: .25em;
+    color: rgb(114, 28, 36);
     position: absolute;
-    top: 5em;
+    top: 4.8em;
     left: 25%;
 }

@@ -29,41 +29,41 @@ Class Form
         foreach($champs as $champ) {
             if(!isset($form[$champ]) || empty($form[$champ])) {
                 if($champ !== 'cgu') {
-                    $_SESSION['erreur'] = "Vous n'avez pas rempli tous les champs demandés";
+                    $_SESSION['erreur'] = "Vous n'avez pas rempli tous les champs demandés.";
                 } else {
-                    $_SESSION['erreur'] = "Vous devez accepter les conditions d'utilisation du site";
+                    $_SESSION['erreur'] = "Vous devez accepter les conditions d'utilisation du site.";
                 }
                 return false;
             }
             if($champ === 'email') {
                 if(!filter_var($form[$champ], FILTER_VALIDATE_EMAIL)) {
-                    $_SESSION['erreur'] = "Votre adresse email n'est pas valide";
+                    $_SESSION['erreur'] = "Votre adresse email n'est pas valide.";
                     return false;
                 } else {
                     $userModel = new UserModel;
                     $userArray = $userModel->findOneByEmail(strip_tags($_POST['email']));
             
                     if($userArray) {
-                        $_SESSION['erreur'] = 'Cette adresse email est déjà utilisée';
+                        $_SESSION['erreur'] = 'Cette adresse email est déjà utilisée.';
                         return false;
                     }
                 }
             }
             if($champ === 'password') {
                 if(strlen($form[$champ]) < 8) {
-                    $_SESSION['erreur'] = "Votre mot de passe est trop court (8 caractères minimum)";
+                    $_SESSION['erreur'] = "Votre mot de passe est trop court (8 caractères minimum).";
                     return false;
                 }
             }
             if($champ === 'firstname') {
                 if(!preg_match ("/^[a-zA-z]*$/", $form[$champ])) {
-                    $_SESSION['erreur'] = "Votre prénom n'est pas valide";
+                    $_SESSION['erreur'] = "Votre prénom n'est pas valide.";
                     return false;
                 }
             }
             if($champ === 'lastname') {
                 if(!preg_match ("/^[a-zA-z]*$/", $form[$champ])) {
-                    $_SESSION['erreur'] = "Votre nom n'est pas valide";
+                    $_SESSION['erreur'] = "Votre nom n'est pas valide.";
                     return false;
                 }
             }

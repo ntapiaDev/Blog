@@ -18,7 +18,6 @@ class UserController extends Controller
             header('Location: /user/login');
             exit;
         }
-        var_dump($_SESSION);
         $this->twig->display('user/index.html.twig');
     }
 
@@ -29,13 +28,17 @@ class UserController extends Controller
      */
     public function login()
     {
-        unset($_SESSION['erreur']);
+        if(isset($_SESSION['user'])) {
+            header('Location: /user');
+            exit;
+        }
+
         if(!empty($_POST)) {
             if(isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['password']) && !empty($_POST['password'])) {
                 $userModel = new UserModel;
                 $userArray = $userModel->findOneByEmail(strip_tags($_POST['email']));
                 if(!$userArray) {
-                    $_SESSION['erreur'] = 'L\'adresse email et/ou le mot de passe est incorrect';
+                    $_SESSION['erreur'] = 'L\'adresse email et/ou le mot de passe est incorrect.';
                     header('Location: /user/login');
                     exit;
                 }
@@ -46,12 +49,12 @@ class UserController extends Controller
                     header('Location: /user');
                     exit;
                 } else {
-                    $_SESSION['erreur'] = 'L\'adresse email et/ou le mot de passe est incorrect';
+                    $_SESSION['erreur'] = 'L\'adresse email et/ou le mot de passe est incorrect.';
                     header('Location: /user/login');
                     exit;
                 }
             } else {
-                $_SESSION['erreur'] = "Vous n'avez pas rempli tous les champs demandés";
+                $_SESSION['erreur'] = "Vous n'avez pas rempli tous les champs demandés.";
             }
         }
 
@@ -69,6 +72,7 @@ class UserController extends Controller
             'loginForm' => $form->create(),
             'message' => isset($_SESSION['erreur']) ? $_SESSION['erreur'] : ''
         ]);
+        unset($_SESSION['erreur']);
     }
 
     /**
@@ -78,7 +82,11 @@ class UserController extends Controller
      */
     public function register()
     {
-        unset($_SESSION['erreur']);
+        if(isset($_SESSION['user'])) {
+            header('Location: /user');
+            exit;
+        }
+
         if(!empty($_POST)) {
             if(Form::validate($_POST, ['email', 'password', 'firstname', 'lastname', 'cgu'])) {
                 $email = strip_tags($_POST['email']);
@@ -132,6 +140,7 @@ class UserController extends Controller
             'registerForm' => $form->create(),
             'message' => isset($_SESSION['erreur']) ? $_SESSION['erreur'] : ''
         ]);
+        unset($_SESSION['erreur']);
     }
 
     /**
