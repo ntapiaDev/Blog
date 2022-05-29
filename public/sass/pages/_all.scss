@@ -6,3 +6,13 @@ section {
     width: 100%;
     max-width: 1480px;
 }
+
+#messages {
+    width: 50%;
+    padding: .45em;
+    border: 1px solid red;
+    color: red;
+    position: absolute;
+    top: 5em;
+    left: 25%;
+}

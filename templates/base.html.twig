@@ -34,6 +34,9 @@
                 </nav>
             </section>
         </header>
+        {% if message != '' %}
+            <aside id="messages">{{ message }}</aside>
+        {% endif %}
     {% endblock %}
     {% block body %}{% endblock %}
     {% block footer %}

@@ -7,5 +7,94 @@ main.visible {
         font-weight: 500;
     }
 
+    .user-container {
+        width: 75%;
+        display: flex;
+
+        .user-info {
+            width: 33%;
+            padding: .5em 2em;
+
+            img {
+                width: 100%;
+            }
+
+            h4 {
+                margin: 1.5em 0;
+                color: rgb(70, 72, 74);
+                font-size: 1rem;
+                font-weight: 700;
+                text-transform: uppercase;
+            }
+
+            a {
+                color: rgb(105, 107, 110);
+                font-size: .9rem;
+                font-weight: 200;
+                text-decoration: none;
+                &:hover {
+                    color: rgb(232, 186, 45);
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .user-form {
+            width: 67%;
+
+            label {
+                width: calc(33% - 2em);
+                margin-left: 2em;
+                display: inline-block;
+                text-transform: uppercase;
+                font-size: .9rem;
+                letter-spacing: .1rem;
+                font-weight: 200;
+            }
+
+            input {
+                width: calc(67% - 4em);
+                margin: .5em 2em;
+                padding: 1em;
+                border: 1px solid rgb(223, 225, 229);
+                border-radius: .3rem;
+                font-size: .9rem;
+                color: rgb(105, 107, 110);
+                &:focus {
+                    border-color: rgb(232, 186, 45);
+                    outline: none;
+                }
+            }
+
+            .checkbox-box {
+                width: calc(10% - 4em);
+                accent-color: rgb(232, 186, 45);
+            }
+            .checkbox-label {
+                width: calc(90% - 2em);
+                margin: 1em 0 0;
+            }
+
+            button {
+                margin-top: 1em;
+                margin-left: 2em;
+                padding: .75rem 1.5rem;
+                border: 1px solid rgb(232, 186, 45);
+                border-radius: 2em;
+                background-color: rgb(232, 186, 45);
+                color: rgb(255, 255, 255);
+                font-size: .9rem;
+                text-transform: uppercase;
+                font-weight: 400;
+                letter-spacing: .2rem;
+                transition: background-color 0.3s ease;
+                &:hover {
+                    cursor: pointer;
+                    background-color: rgb(213, 165, 35);
+                }
+            }
+        }
+    }
+
 }
     

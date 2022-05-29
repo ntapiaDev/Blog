@@ -5,7 +5,17 @@
 {% block body %}
     <main class="visible">
         <section>
-            <h2>Page de Register</h2>
+            <h2>Enregistrement</h2>
+            <div class="user-container">
+                <div class="user-info">
+                    <img src="/img/plane.jpg" alt="">
+                    <h4>Vous avez déjà un compte ?</h4>
+                    <p><a href="/user/login">Se connecter</a></p>
+                </div>
+                <div class="user-form">
+                    {{ registerForm|raw }}
+                </div>
+            </div>
         </section>
     </main>
 {% endblock %}

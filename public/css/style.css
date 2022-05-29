@@ -160,6 +160,16 @@ section {
   max-width: 1480px;
 }
 
+#messages {
+  width: 50%;
+  padding: .45em;
+  border: 1px solid red;
+  color: red;
+  position: absolute;
+  top: 5em;
+  left: 25%;
+}
+
 body {
   min-height: 100vh;
   display: -webkit-box;
@@ -604,5 +614,101 @@ main.visible h2 {
   color: #46484a;
   font-size: 2.8rem;
   font-weight: 500;
+}
+
+main.visible .user-container {
+  width: 75%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main.visible .user-container .user-info {
+  width: 33%;
+  padding: .5em 2em;
+}
+
+main.visible .user-container .user-info img {
+  width: 100%;
+}
+
+main.visible .user-container .user-info h4 {
+  margin: 1.5em 0;
+  color: #46484a;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+main.visible .user-container .user-info a {
+  color: #696b6e;
+  font-size: .9rem;
+  font-weight: 200;
+  text-decoration: none;
+}
+
+main.visible .user-container .user-info a:hover {
+  color: #e8ba2d;
+  text-decoration: underline;
+}
+
+main.visible .user-container .user-form {
+  width: 67%;
+}
+
+main.visible .user-container .user-form label {
+  width: calc(33% - 2em);
+  margin-left: 2em;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: .9rem;
+  letter-spacing: .1rem;
+  font-weight: 200;
+}
+
+main.visible .user-container .user-form input {
+  width: calc(67% - 4em);
+  margin: .5em 2em;
+  padding: 1em;
+  border: 1px solid #dfe1e5;
+  border-radius: .3rem;
+  font-size: .9rem;
+  color: #696b6e;
+}
+
+main.visible .user-container .user-form input:focus {
+  border-color: #e8ba2d;
+  outline: none;
+}
+
+main.visible .user-container .user-form .checkbox-box {
+  width: calc(10% - 4em);
+  accent-color: #e8ba2d;
+}
+
+main.visible .user-container .user-form .checkbox-label {
+  width: calc(90% - 2em);
+  margin: 1em 0 0;
+}
+
+main.visible .user-container .user-form button {
+  margin-top: 1em;
+  margin-left: 2em;
+  padding: .75rem 1.5rem;
+  border: 1px solid #e8ba2d;
+  border-radius: 2em;
+  background-color: #e8ba2d;
+  color: white;
+  font-size: .9rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: .2rem;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
+main.visible .user-container .user-form button:hover {
+  cursor: pointer;
+  background-color: #d5a523;
 }
 /*# sourceMappingURL=style.css.map */
