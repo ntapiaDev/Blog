@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
-main section .grid article .img-hover, main section .contact-container ul li {
+.user-link .user-span, main section .grid article .img-hover, main section .contact-container ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20,6 +20,36 @@ main section .grid article .img-hover, main section .contact-container ul li {
 
 html, input, textarea {
   font-family: 'Montserrat', sans-serif;
+}
+
+.user-link .user-span {
+  width: 2em;
+  height: 2em;
+  margin-top: -.5em;
+  margin-left: 1em;
+  margin-right: 1em;
+  border: 0.05em solid #dfe1e5;
+  border-radius: 50%;
+  color: white;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.user-link .user-span span {
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.user-link:hover .user-span,
+.user-link:hover .user-span span,
+.user-link.active .user-span,
+.user-link.active .user-span span {
+  color: #e8ba2d;
+  border-color: #e8ba2d;
+}
+
+.fixed-nav span {
+  color: #46484a;
 }
 
 footer {

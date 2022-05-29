@@ -1,0 +1,30 @@
+.user-link {
+
+    .user-span {
+        width: 2em;
+        height: 2em;
+        margin-top: -.5em;
+        margin-left: 1em;
+        margin-right: 1em;
+        border: 0.05em solid #dfe1e5;
+        border-radius: 50%;
+        color: rgb(255, 255, 255);
+        transition: all .3s ease;
+        & span {
+            transition: all .3s ease;
+        }
+        @extend %flex-center;
+    }
+    
+    &:hover .user-span,
+    &:hover .user-span span,
+    &.active .user-span,
+    &.active .user-span span {
+        color: rgb(232, 186, 45);
+        border-color: rgb(232, 186, 45);
+    }
+}
+
+.fixed-nav span {
+    color: rgb(70, 72, 74);
+}

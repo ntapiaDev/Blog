@@ -2,6 +2,10 @@
 
 {% block title %}Destinations{% endblock %}
 
+{% block javascript %}
+    <script src="/js/main.js" defer></script>
+{% endblock %}
+
 {% block header %}
     <header class="header__main">
         <section id="header">
@@ -12,6 +16,7 @@
                     <li><a href="#destinations" data-color="light">Destinations</a></li>
                     <li><a href="" data-color="light">A propos</a></li>
                     <li><a href="#contact" data-color="light">Contact</a></li>
+                    <a href="/user" class="user-link"><span class="user-span"><span class="fa-solid fa-user"></span></span></a>
                 </ul>
                 <div class="fixed-nav">
                     <div>
@@ -21,6 +26,7 @@
                             <li><a href="#destinations" data-color="dark">Destinations</a></li>
                             <li><a href="" data-color="dark">A propos</a></li>
                             <li><a href="#contact" data-color="dark">Contact</a></li>
+                            <a href="/user" class="user-link"><span class="user-span"><span class="fa-solid fa-user"></span></span></a>
                         </ul>
                     </div>
                 </div>

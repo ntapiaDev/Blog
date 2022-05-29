@@ -68,7 +68,9 @@ function changeIndicator(element) {
             easing: 'cubic-bezier(.48,1.35,.28,1)'
         });
     })
-    activeItem = element;
+    if(activeItem != element) {
+        activeItem = element;
+    }
 }
 
 //Menu on scroll
@@ -76,14 +78,22 @@ const destinations = document.querySelector('#destinations');
 const contact = document.querySelector('#contact');
 
 function updateIndicator() {
-    if(destinations.getBoundingClientRect().y > 100 && activeItem != menuItems[0]) {
-        if(activeItem !== menuItems[1] && activeItem !== menuItems[2] && activeItem !== menuItems[3])
-        activeItem = menuItems[0];
-        changeIndicator(menuItems[0]);
-    } else if(destinations.getBoundingClientRect().y < 100 && contact.getBoundingClientRect().y > 100 && activeItem != menuItems[1]) {
-        changeIndicator(menuItems[5]);
-    } else if (contact.getBoundingClientRect().y < 100 && activeItem != menuItems[3]){
-        changeIndicator(menuItems[7]);
+    if(destinations !== null) {
+        if(destinations.getBoundingClientRect().y > 100 && activeItem != menuItems[0]) {
+            if(activeItem !== menuItems[1] && activeItem !== menuItems[2] && activeItem !== menuItems[3])
+            activeItem = menuItems[0];
+            changeIndicator(menuItems[0]);
+        } else if(destinations.getBoundingClientRect().y < 100 && contact.getBoundingClientRect().y > 100 && activeItem != menuItems[6]) {
+            changeIndicator(menuItems[6]);
+            activeItem = menuItems[6];
+            changeIndicator(menuItems[6]);
+        } else if (contact.getBoundingClientRect().y < 100 && activeItem != menuItems[8]){
+            changeIndicator(menuItems[8]);
+            activeItem = menuItems[8];
+            changeIndicator(menuItems[8]);
+        }
+    } else {
+        changeIndicator(menuItems[4]);
     }
 }
 
