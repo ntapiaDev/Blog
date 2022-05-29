@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
-.user-link .user-span, main section .grid article .img-hover, main section .contact-container ul li {
+.user-link .user-span, main section ul li:nth-child(6) span, main section .grid article .img-hover, main section .contact-container ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -395,10 +395,32 @@ main section ul li {
   text-transform: uppercase;
   letter-spacing: .1rem;
   font-weight: 300;
-  cursor: pointer;
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease;
 }
 
 main section ul li:nth-child(1) {
+  color: #e8ba2d;
+}
+
+main section ul li:nth-child(6) span {
+  width: 1.5em;
+  height: 1.5em;
+  margin: -.4em 0;
+  padding-left: .075em;
+  border: 0.05em solid #dfe1e5;
+  border-radius: 50%;
+  font-size: 1.4em;
+  -webkit-transition: border-color .3s ease;
+  transition: border-color .3s ease;
+}
+
+main section ul li:nth-child(6) span:hover {
+  border-color: #e8ba2d;
+}
+
+main section ul li:hover {
+  cursor: pointer;
   color: #e8ba2d;
 }
 

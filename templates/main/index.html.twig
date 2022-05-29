@@ -48,6 +48,9 @@
                 <li>Montagne</li>
                 <li>Lac</li>
                 <li>Océan</li>
+                {% if user.roles == 'ROLE_ADMIN' %}
+                    <li><span class="fa-solid fa-plus"></span></li>
+                {% endif %}
             </ul>
             <div class="grid">
                 <article>

@@ -139,11 +139,6 @@ main {
         display: flex;
         flex-direction: column;
         align-items: center;
-        //Destinations
-        // &:nth-child(1) {
-        //     min-height: 100vh;
-        // }
-        //Contact
         &:nth-child(2) {
             min-height: 75vh;
         }
@@ -166,8 +161,26 @@ main {
                 text-transform: uppercase;
                 letter-spacing: .1rem;
                 font-weight: 300;
-                cursor: pointer;
+                transition: color .3s ease;
                 &:nth-child(1) {
+                    color: rgb(232, 186, 45);
+                }
+                &:nth-child(6) span {
+                    width: 1.5em;
+                    height: 1.5em;
+                    margin: -.4em 0;
+                    padding-left: .075em;
+                    border: .05em solid rgb(223, 225, 229);
+                    border-radius: 50%;
+                    font-size: 1.4em;
+                    @extend %flex-center;
+                    transition: border-color .3s ease;
+                    &:hover {
+                        border-color: rgb(232, 186, 45);
+                    }
+                }
+                &:hover {
+                    cursor: pointer;
                     color: rgb(232, 186, 45);
                 }
             }

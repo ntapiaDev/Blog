@@ -80,7 +80,7 @@ const contact = document.querySelector('#contact');
 function updateIndicator() {
     if(destinations !== null) {
         if(destinations.getBoundingClientRect().y > 100 && activeItem != menuItems[0]) {
-            if(activeItem !== menuItems[1] && activeItem !== menuItems[2] && activeItem !== menuItems[3])
+            changeIndicator(menuItems[0]);
             activeItem = menuItems[0];
             changeIndicator(menuItems[0]);
         } else if(destinations.getBoundingClientRect().y < 100 && contact.getBoundingClientRect().y > 100 && activeItem != menuItems[6]) {

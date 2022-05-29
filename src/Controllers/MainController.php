@@ -10,6 +10,14 @@ class MainController extends Controller
      */
     public function index()
     {
-        $this->twig->display('main/index.html.twig');
+        if(isset($_SESSION['user'])) {
+            $user = $_SESSION['user'];
+        } else {
+            $user = [];
+        }
+
+        $this->twig->display('main/index.html.twig', [
+            'user' => $user
+        ]);
     }
 }
