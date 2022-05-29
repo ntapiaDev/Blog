@@ -16,26 +16,46 @@
 
 </head>
 <body>
-
+    {% block header %}
+        <header>
+            <section>
+                <nav>
+                    <div class="fixed-nav visible">
+                        <div>
+                            <p>Destinations</p>
+                            <ul>
+                                <li><a href="#home" data-color="dark">Accueil</a></li>
+                                <li><a href="#destinations" data-color="dark">Destinations</a></li>
+                                <li><a href="" data-color="dark">A propos</a></li>
+                                <li><a href="#contact" data-color="dark">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </section>
+        </header>
+    {% endblock %}
     {% block body %}{% endblock %}
-    <footer>
-        <section>
-            <ul>
-                <li><a href="#home" class="home">Accueil</a></li>
-                <li><a href="#destinations">Destinations</a></li>
-                <li><a href="">A propos</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="divider"></div>
-            <div class="container">
-                <p>Inspiré du template <a href="https://medialoot.com/preview/sundown/index.html" target="_blank">Sundown</a> de Bootstrap 4.</p>
+    {% block footer %}
+        <footer>
+            <section>
                 <ul>
-                    <li><span class="fa-brands fa-facebook-f"></span></li>
-                    <li><span class="fa-brands fa-twitter"></span></li>
-                    <li><span class="fa-brands fa-instagram"></span></li>
+                    <li><a href="#header" class="home">Accueil</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="">A propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
-            </div>
-        </section>
-    </footer>
+                <div class="divider"></div>
+                <div class="container">
+                    <p>Inspiré du template <a href="https://medialoot.com/preview/sundown/index.html" target="_blank">Sundown</a> de Bootstrap 4.</p>
+                    <ul>
+                        <li><span class="fa-brands fa-facebook-f"></span></li>
+                        <li><span class="fa-brands fa-twitter"></span></li>
+                        <li><span class="fa-brands fa-instagram"></span></li>
+                    </ul>
+                </div>
+            </section>
+        </footer>
+    {% endblock %}
 </body>
 </html>

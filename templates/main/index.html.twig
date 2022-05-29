@@ -2,13 +2,13 @@
 
 {% block title %}Destinations{% endblock %}
 
-{% block body %}
-    <header>
-        <section id="home">
+{% block header %}
+    <header class="header__main">
+        <section id="header">
             <nav>
                 <p>Destinations</p>
                 <ul>
-                    <li><a href="#home" class="active active-light" data-color="light">Accueil</a></li>
+                    <li><a href="#header" class="active active-light" data-color="light">Accueil</a></li>
                     <li><a href="#destinations" data-color="light">Destinations</a></li>
                     <li><a href="" data-color="light">A propos</a></li>
                     <li><a href="#contact" data-color="light">Contact</a></li>
@@ -17,7 +17,7 @@
                     <div>
                         <p>Destinations</p>
                         <ul>
-                            <li><a href="#home" data-color="dark">Accueil</a></li>
+                            <li><a href="#header" data-color="dark">Accueil</a></li>
                             <li><a href="#destinations" data-color="dark">Destinations</a></li>
                             <li><a href="" data-color="dark">A propos</a></li>
                             <li><a href="#contact" data-color="dark">Contact</a></li>
@@ -31,7 +31,8 @@
             </div>
         </section>
     </header>
-
+{% endblock %}
+{% block body %}
     <main>
         <section id="destinations">
             <h2>Nos destinations</h2>
