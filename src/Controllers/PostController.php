@@ -38,14 +38,13 @@ class PostController extends Controller
                 $ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
                 $file_name = basename(md5(rand()) . '.' . $ext);
                 $upload_file = $upload_dir . $file_name;
-                $upload_img = '/uploads/' . $file_name;
                 move_uploaded_file($_FILES["image"]["tmp_name"], $upload_file);
                 
                 $post = new PostModel;
                 $post->setTitle($title)
                     ->setHook($hook)
                     ->setCategory($category)
-                    ->setImage($upload_img)
+                    ->setImage($file_name)
                     ->setContent($content)
                     ->setUser($_SESSION['user']['id'])
                     ->setSlug(strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $title))));

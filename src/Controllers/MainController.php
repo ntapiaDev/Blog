@@ -1,6 +1,8 @@
 <?php
 namespace App\Controllers;
 
+use App\Models\PostModel;
+
 class MainController extends Controller
 {
     /**
@@ -16,8 +18,13 @@ class MainController extends Controller
             $user = [];
         }
 
+        $postModel = new PostModel;
+
+        $posts = $postModel->findAll();
+
         $this->twig->display('main/index.html.twig', [
-            'user' => $user
+            'user' => $user,
+            'posts' => $posts
         ]);
     }
 }

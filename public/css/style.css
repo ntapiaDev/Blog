@@ -660,16 +660,16 @@ main section .contact-container ul li:hover {
   text-transform: uppercase;
 }
 
-.new-container .new-info a {
+.new-container .new-info p {
   color: #696b6e;
   font-size: .9rem;
   font-weight: 200;
   text-decoration: none;
+  text-align: justify;
 }
 
-.new-container .new-info a:hover {
-  color: #e8ba2d;
-  text-decoration: underline;
+.new-container .new-info p ~ p {
+  margin-top: 1em;
 }
 
 .new-container .new-form {
@@ -684,6 +684,10 @@ main section .contact-container ul li:hover {
   font-size: .9rem;
   letter-spacing: .1rem;
   font-weight: 200;
+}
+
+.new-container .new-form label:nth-child(9) {
+  margin-bottom: .5em;
 }
 
 .new-container .new-form input, .new-container .new-form select, .new-container .new-form textarea {

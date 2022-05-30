@@ -53,52 +53,16 @@
                 {% endif %}
             </ul>
             <div class="grid">
-                <article>
-                    <img src="/img/forest1.jpg" alt="">
-                    <div class="img-hover">
-                        <h3>Forest 1</h3>
-                        <p>Une magnifique foret</p>
-                        <a href="">ZOOM</a>
-                    </div>
-                </article>
-                <article>
-                    <img src="/img/mountain1.jpg" alt="">
-                    <div class="img-hover">
-                        <h3>Mountain 1</h3>
-                        <p>Une magnifique montagne</p>
-                        <a href="">ZOOM</a>
-                    </div>
-                </article>
-                <article>
-                    <img src="/img/lake1.jpg" alt="">
-                </article>
-                <article>
-                    <img src="/img/ocean1.jpg" alt="">
-                </article>
-                <article>
-                    <img src="/img/forest2.jpg" alt="">
-                </article>
-                <article>
-                    <img src="/img/mountain2.jpg" alt="">
-                </article>
-                <article>
-                    <img src="/img/lake2.jpg" alt="">
-                </article>
-                <article>
-                    <img src="/img/ocean2.jpg" alt="">
-                </article>
-                <article>
-                    <img src="/img/forest3.jpg" alt="">
-                </article>
-                <article>
-                    <img src="/img/mountain3.jpg" alt="">
-                </article>
-                <article>
-                    <img src="/img/lake3.jpg" alt="">
-                </article>
-                <article>
-                    <img src="/img/ocean3.jpg" alt="">
-                </article>
+                {% for post in posts|reverse %}
+                    <article>
+                        <img src="/uploads/{{ post.image }}" alt="">
+                        <div class="img-hover">
+                            <h3>{{ post.title }}</h3>
+                            <p>{{ post.hook }}</p>
+                            <a href="/post/{{ post.slug }}">ZOOM</a>
+                        </div>
+                    </article>
+                {% endfor %}
             </div>
         </section>
 

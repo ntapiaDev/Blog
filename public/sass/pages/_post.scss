@@ -18,14 +18,14 @@
             text-transform: uppercase;
         }
 
-        a {
+        p {
             color: rgb(105, 107, 110);
             font-size: .9rem;
             font-weight: 200;
             text-decoration: none;
-            &:hover {
-                color: rgb(232, 186, 45);
-                text-decoration: underline;
+            text-align: justify;
+            & ~ p {
+                margin-top: 1em;
             }
         }
     }
@@ -41,6 +41,9 @@
             font-size: .9rem;
             letter-spacing: .1rem;
             font-weight: 200;
+            &:nth-child(9) {
+                margin-bottom: .5em;
+            }
         }
 
         input, select, textarea {
