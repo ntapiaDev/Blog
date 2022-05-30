@@ -165,18 +165,21 @@ main {
                 &:nth-child(1) {
                     color: rgb(232, 186, 45);
                 }
-                &:nth-child(6) span {
+                &:nth-child(6) a {
                     width: 1.5em;
                     height: 1.5em;
                     margin: -.4em 0;
                     padding-left: .075em;
                     border: .05em solid rgb(223, 225, 229);
                     border-radius: 50%;
+                    color: rgb(105, 107, 110);
+                    text-decoration: none;
                     font-size: 1.4em;
                     @extend %flex-center;
-                    transition: border-color .3s ease;
+                    transition: all .3s ease;
                     &:hover {
                         border-color: rgb(232, 186, 45);
+                        color: rgb(232, 186, 45);
                     }
                 }
                 &:hover {

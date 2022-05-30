@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
-.user-link .user-span, main section ul li:nth-child(6) span, main section .grid article .img-hover, main section .contact-container ul li {
+.user-link .user-span, main section ul li:nth-child(6) a, main section .grid article .img-hover, main section .contact-container ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18,7 +18,7 @@
           box-sizing: border-box;
 }
 
-html, input, textarea {
+html, input, textarea, select {
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -403,20 +403,23 @@ main section ul li:nth-child(1) {
   color: #e8ba2d;
 }
 
-main section ul li:nth-child(6) span {
+main section ul li:nth-child(6) a {
   width: 1.5em;
   height: 1.5em;
   margin: -.4em 0;
   padding-left: .075em;
   border: 0.05em solid #dfe1e5;
   border-radius: 50%;
+  color: #696b6e;
+  text-decoration: none;
   font-size: 1.4em;
-  -webkit-transition: border-color .3s ease;
-  transition: border-color .3s ease;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
 }
 
-main section ul li:nth-child(6) span:hover {
+main section ul li:nth-child(6) a:hover {
   border-color: #e8ba2d;
+  color: #e8ba2d;
 }
 
 main section ul li:hover {
@@ -631,6 +634,107 @@ main section .contact-container ul li span {
 main section .contact-container ul li:hover {
   color: #e8ba2d;
   border-color: #e8ba2d;
+}
+
+.new-container {
+  width: 75%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.new-container .new-info {
+  width: 33%;
+  padding: .5em 2em;
+}
+
+.new-container .new-info img {
+  width: 100%;
+}
+
+.new-container .new-info h4 {
+  margin: 1.5em 0;
+  color: #46484a;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.new-container .new-info a {
+  color: #696b6e;
+  font-size: .9rem;
+  font-weight: 200;
+  text-decoration: none;
+}
+
+.new-container .new-info a:hover {
+  color: #e8ba2d;
+  text-decoration: underline;
+}
+
+.new-container .new-form {
+  width: 67%;
+}
+
+.new-container .new-form label {
+  width: calc(33% - 2em);
+  margin-left: 2em;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: .9rem;
+  letter-spacing: .1rem;
+  font-weight: 200;
+}
+
+.new-container .new-form input, .new-container .new-form select, .new-container .new-form textarea {
+  width: calc(67% - 4em);
+  margin: .5em 2em;
+  padding: 1em;
+  border: 1px solid #dfe1e5;
+  border-radius: .3rem;
+  font-size: .9rem;
+  color: #696b6e;
+}
+
+.new-container .new-form input:focus, .new-container .new-form select:focus, .new-container .new-form textarea:focus {
+  border-color: #e8ba2d;
+  outline: none;
+}
+
+.new-container .new-form textarea {
+  width: calc(100% - 4em);
+  height: 8em;
+}
+
+.new-container .new-form .checkbox-box {
+  width: calc(10% - 4em);
+  accent-color: #e8ba2d;
+}
+
+.new-container .new-form .checkbox-label {
+  width: calc(90% - 2em);
+  margin: 1em 0 0;
+}
+
+.new-container .new-form button {
+  margin-top: 1em;
+  margin-left: 2em;
+  padding: .75rem 1.5rem;
+  border: 1px solid #e8ba2d;
+  border-radius: 2em;
+  background-color: #e8ba2d;
+  color: white;
+  font-size: .9rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: .2rem;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
+.new-container .new-form button:hover {
+  cursor: pointer;
+  background-color: #d5a523;
 }
 
 main.visible h2 {

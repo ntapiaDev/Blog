@@ -62,9 +62,9 @@ class UserController extends Controller
 
         $form->debutForm()
             ->ajoutLabelFor('email', 'Votre email :')
-            ->ajoutInput('email', 'email', ['id' => 'email', 'class' => ''])
+            ->ajoutInput('email', 'email', ['id' => 'email', 'class' => '', 'placeholder' => 'Adresse email'])
             ->ajoutLabelFor('password', 'Votre mot de passe :')
-            ->ajoutInput('password', 'password', ['id' => 'password', 'class' => ''])
+            ->ajoutInput('password', 'password', ['id' => 'password', 'class' => '', 'placeholder' => 'Mot de passe'])
             ->ajoutBouton('Me connecter', ['class' => ''])
             ->finForm();
 

@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <main class="visible">
+        <section>
+            <h2>Créer un post</h2>
+            <div class="new-container">
+                <div class="new-info">
+                    <img src="/img/balloon.jpg" alt="">
+                    <h4>Rules</h4>
+                    <p><a href="/user/register">Blabla</a></p>
+                </div>
+                <div class="new-form">
+                    {{ NewForm|raw }}
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}
