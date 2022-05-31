@@ -20,6 +20,11 @@ Class PostModel extends Model
         $this->table = strtolower(str_replace('Model', '', $class));
     }
 
+    public function findOneBySlug(string $slug)
+    {
+        return $this->request("SELECT * FROM $this->table WHERE slug = ?", [$slug])->fetch();
+    }
+
     /**
      * Get the value of id
      */ 

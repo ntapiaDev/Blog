@@ -11,9 +11,15 @@ class PostController extends Controller
      *
      * @return void
      */
-    public function show()
-    {
-        $this->twig->display('post/show.html.twig');
+    public function show($slug)
+    {   
+        $postModel = new PostModel;
+
+        $post = $postModel->findOneBySlug($slug);
+
+        $this->twig->display('post/show.html.twig', [
+            'post' => $post
+        ]);
     }
 
     public function new()
