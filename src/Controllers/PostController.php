@@ -25,7 +25,7 @@ class PostController extends Controller
         $this->twig->display('post/show.html.twig', [
             'post' => $post,
             'user' => $user,
-            'currentUser' => $_SESSION['user']['id']
+            'currentUser' => isset($_SESSION['user']) ? $_SESSION['user']['id'] : ''
         ]);
     }
 
@@ -97,7 +97,7 @@ class PostController extends Controller
 
         $post = $postModel->findOneBySlug($slug);
 
-        if($post->user !== $_SESSION['user']['id']) {
+        if(!isset($_SESSION['user']) || $post->user !== $_SESSION['user']['id']) {
             header('Location: /main/forbidden');
             exit;
         }
@@ -157,7 +157,9 @@ class PostController extends Controller
         
         $this->twig->display('post/edit.html.twig', [
             'image' => $post->image,
-            'editForm' => $form->create()
+            'editForm' => $form->create(),
+            'message' => isset($_SESSION['erreur']) ? $_SESSION['erreur'] : ''
         ]);
+        unset($_SESSION['erreur']);
     }
 }

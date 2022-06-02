@@ -12,7 +12,7 @@
                     <li><a href="/#destinations" data-color="light">Destinations</a></li>
                     <li><a href="" data-color="light">A propos</a></li>
                     <li><a href="/#contact" data-color="light">Contact</a></li>
-                    <a href="/user" class="user-link"><span class="user-span"><span class="fa-solid fa-user"></span></span></a>
+                    <a href="/user" class="user-link" data-color="light"><span class="user-span"><span class="fa-solid fa-user"></span></span></a>
                 </ul>
             </nav>
             <div class="title">
@@ -20,5 +20,10 @@
             </div>
         </section>
     </header>
+{% endblock %}
+{% block body %}
+    <main>
+        <section id="destinations"></section>
+    </main>
 {% endblock %}
 {% block footer %}{% endblock %}
