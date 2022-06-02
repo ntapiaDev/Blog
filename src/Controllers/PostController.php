@@ -53,7 +53,7 @@ class PostController extends Controller
                     ->setImage($file_name)
                     ->setContent($content)
                     ->setUser($_SESSION['user']['id'])
-                    ->setSlug(strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $title))));
+                    ->setSlug($title);
 
                 // var_dump($post);
                 $post->create();

@@ -49,7 +49,7 @@
                 <li>Lac</li>
                 <li>Océan</li>
                 {% if user.roles == 'ROLE_ADMIN' %}
-                    <li><a href="http://destinations/post/new"><span class="fa-solid fa-plus"></span></a></li>
+                    <li><a href="/post/new"><span class="fa-solid fa-plus"></span></a></li>
                 {% endif %}
             </ul>
             <div class="grid">
@@ -59,7 +59,7 @@
                         <div class="img-hover">
                             <h3>{{ post.title }}</h3>
                             <p>{{ post.hook }}</p>
-                            <p>Créé le {{ post.created_at }}</p>
+                            <p>Créé le {{ post.formated_created_at }}</p>
                             <a href="/post/show/{{ post.slug }}">ZOOM</a>
                         </div>
                     </article>

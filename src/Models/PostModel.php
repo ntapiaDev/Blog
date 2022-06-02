@@ -20,6 +20,12 @@ Class PostModel extends Model
         $this->table = strtolower(str_replace('Model', '', $class));
     }
 
+    public function findAll()
+    {
+        $query = $this->request('SELECT *, DATE_FORMAT(created_at, "%d/%m/%Y à %Hh%i") as formated_created_at FROM ' . $this->table);
+        return $query->fetchAll();
+    }
+
     public function findOneBySlug(string $slug)
     {
         return $this->request("SELECT * FROM $this->table WHERE slug = ?", [$slug])->fetch();
@@ -158,9 +164,27 @@ Class PostModel extends Model
      *
      * @return  self
      */ 
-    public function setSlug($slug)
+    public function setSlug($text, string $divider = '-')
     {
-        $this->slug = $slug;
+        // replace non letter or digits by divider
+        $text = preg_replace('~[^\pL\d]+~u', $divider, $text);
+
+        // transliterate
+        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+        // remove unwanted characters
+        $text = preg_replace('~[^-\w]+~', '', $text);
+
+        // trim
+        $text = trim($text, $divider);
+
+        // remove duplicate divider
+        $text = preg_replace('~-+~', $divider, $text);
+
+        // lowercase
+        $text = strtolower($text);
+
+        $this->slug = $text;
 
         return $this;
     }
