@@ -28,7 +28,7 @@ Class PostModel extends Model
 
     public function findOneBySlug(string $slug)
     {
-        return $this->request("SELECT * FROM $this->table WHERE slug = ?", [$slug])->fetch();
+        return $this->request("SELECT *, DATE_FORMAT(created_at, '%d/%m/%Y à %Hh%i') as formated_created_at, DATE_FORMAT(updated_at, '%d/%m/%Y à %Hh%i') as formated_updated_at FROM $this->table WHERE slug = ?", [$slug])->fetch();
     }
 
     /**

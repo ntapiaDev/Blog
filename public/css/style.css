@@ -741,6 +741,74 @@ main section .contact-container ul li:hover {
   background-color: #d5a523;
 }
 
+.show-container {
+  width: 75%;
+}
+
+.show-container > p {
+  text-align: end;
+  color: #696b6e;
+  font-size: .9rem;
+  font-weight: 200;
+}
+
+.show-container > p a {
+  color: #e8ba2d;
+  text-decoration: none;
+}
+
+.show-container > p a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.show-container .main-img {
+  width: 100%;
+  margin: 1em 0;
+}
+
+.show-container .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.show-container .author-info {
+  width: 25%;
+  text-align: center;
+}
+
+.show-container .author-info h4 {
+  margin: 1.5em 0;
+  color: #46484a;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.show-container .author-info img {
+  width: 50%;
+}
+
+.show-container .author-info p {
+  margin: .5em 0;
+}
+
+.show-container .author-info p:nth-child(3) {
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.show-container .author-info p:nth-child(4) {
+  color: #696b6e;
+  font-size: .9rem;
+  font-weight: 200;
+}
+
+.show-container .post-info {
+  width: 75%;
+}
+
 main.visible h2 {
   margin: 0.53em 0;
   color: #46484a;

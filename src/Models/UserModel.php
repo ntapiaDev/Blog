@@ -30,6 +30,17 @@ Class UserModel extends Model
     }
 
     /**
+     * Récupère le nom d'un user à partir de son id
+     *
+     * @param integer $id
+     * @return string
+     */
+    public function findOneById(int $id)
+    {
+        return $this->request("SELECT * FROM $this->table WHERE id = ?", [$id])->fetch();
+    }
+
+    /**
      * Crée la session utilisateur à la connexion
      *
      * @return void

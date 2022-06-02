@@ -27,4 +27,9 @@ class MainController extends Controller
             'posts' => $posts
         ]);
     }
+
+    public function forbidden()
+    {
+        $this->twig->display('main/forbidden.html.twig');
+    }
 }

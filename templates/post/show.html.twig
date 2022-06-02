@@ -1,13 +1,35 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{% endblock %}
+{% block title %}{{ post.title }}{% endblock %}
 
 {% block body %}
     <main class="visible">
         <section>
-            <h2>Destination</h2>
-            <p>{{ post.title }}</p>
-            <img src="/uploads/{{ post.image }}" alt="">
+            <h2>{{ post.title }}</h2>
+            <div class="show-container">
+                <p>Article publié le {{ post.formated_created_at }}
+                    {% if post.formated_created_at != post.formated_updated_at %}
+                        - modifié le {{ post.formated_updated_at }}
+                    {% endif %}
+                </p>
+                {% if user.id == currentUser %}
+                    <p><a href="/post/edit/{{ post.slug }}">Editer cet article</a></p>
+                {% endif %}
+                <img src="/uploads/{{ post.image }}" alt="{{ post.title }}" class="main-img">
+                <div class="content">
+                    <div class="post-info">
+                        <p>{{ post.hook }}</p>
+                        <p>{{ post.content }}</p>
+                        
+                    </div>
+                    <div class="author-info">
+                        <h4>A propos de l'auteur :</h4>
+                        <img src="/uploads/{{ user.avatar }}" alt="">
+                        <p>{{ user.firstname }} {{ user.lastname }}</p>
+                        <p>{{ user.hook }}</p>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 {% endblock %}

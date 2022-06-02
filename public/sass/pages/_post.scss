@@ -93,3 +93,66 @@
         }
     }
 }
+
+.show-container {
+    width: 75%;
+    
+    & > p {
+        text-align: end;
+        color: rgb(105, 107, 110);
+        font-size: .9rem;
+        font-weight: 200;
+
+        a {
+            color: rgb(232, 186, 45);
+            text-decoration: none;
+            &:hover {
+                color: rgb(0, 86, 179);
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .main-img {
+        width: 100%;
+        margin: 1em 0;
+    }
+
+    .content {
+        display: flex;
+    }
+
+    .author-info {
+        width: 25%;
+        text-align: center;
+
+        h4 {
+            margin: 1.5em 0;
+            color: rgb(70, 72, 74);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        img {
+            width: 50%;
+        }
+        p {
+            margin: .5em 0;
+
+            &:nth-child(3) {
+                text-transform: uppercase;
+                font-weight: 300;
+            }
+            &:nth-child(4) {
+                color: rgb(105, 107, 110);
+                font-size: .9rem;
+                font-weight: 200;
+            }
+        }
+    }
+
+    .post-info {
+        width: 75%;
+    }
+    
+}

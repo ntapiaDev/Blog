@@ -153,7 +153,7 @@ Class Form
         $this->formCode .= $attributs ? $this->ajoutAttributs($attributs).'>' : '>';
 
         foreach($options as $valeur => $texte) {
-            $this->formCode .= "<option value=\"$valeur\">$texte</option>";
+            $this->formCode .= "<option value=\"$valeur>$texte</option>";
         }
 
         $this->formCode .= '</select>';
