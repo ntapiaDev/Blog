@@ -1,6 +1,14 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{% endblock %}
+{% block title %}Édition{% endblock %}
+
+{% block javascript %}
+    <script src="https://cdn.tiny.cloud/1/1ms6rpizsp12e6degzx3l17mhy64wcxmkblrl02qtavg01t0/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({
+        selector:'textarea',
+        language: 'fr_FR'
+    });</script>
+{% endblock %}
 
 {% block body %}
     <main class="visible">
@@ -9,7 +17,7 @@
             <div class="new-container">
                 <div class="new-info">
                     <img src="/uploads/{{ image }}" alt="">
-                    <h4>Règles de soumission</h4>
+                    <h4>Règles de modification</h4>
                     <p>Avant chaque envoi, il est demandé de renseigner le titre, le chapô (phrase d'accroche), la catégorie ainsi que l'illustration qui illustrera votre article.</p>
                     <p>Vous pouvez ensuite indiquer ce qui vous plait dans cet endroit et tout ce que vous voulez partager avec les autres lecteurs :)</p>
                     <p>Chaque article pourra recevoir une note et des commentaires.</p>

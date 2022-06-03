@@ -22,10 +22,21 @@ class PostController extends Controller
 
         $user = $userModel->findOneById($post->user);
 
+        //Formulaire de commentaires :
+        $comment = isset($_POST['comment']) ? strip_tags($_POST['comment']) : '';
+
+        $form = new Form;
+        $form->debutForm()
+            ->ajoutLabelFor('comment', 'Ajouter un commentaire :')
+            ->ajoutInput('text', 'comment', ['id' => 'comment', 'class' => '', 'placeholder' => 'Votre commentaire', 'value' => $comment])
+            ->ajoutBouton('Envoyer', ['class' => ''])
+            ->finForm();
+
         $this->twig->display('post/show.html.twig', [
             'post' => $post,
             'user' => $user,
-            'currentUser' => isset($_SESSION['user']) ? $_SESSION['user']['id'] : ''
+            'currentUser' => isset($_SESSION['user']) ? $_SESSION['user']['id'] : '',
+            'commentForm' => $form->create()
         ]);
     }
 
@@ -38,7 +49,8 @@ class PostController extends Controller
 
         $title = isset($_POST['title']) ? strip_tags($_POST['title']) : '';
         $hook = isset($_POST['hook']) ? strip_tags($_POST['hook']) : '';
-        $content = isset($_POST['content']) ? strip_tags($_POST['content']) : '';
+        // $content = isset($_POST['content']) ? strip_tags($_POST['content']) : '';
+        $content = isset($_POST['content']) ? $_POST['content'] : '';
         if(!empty($_POST)) {
             if(Form::validate($_POST, ['title', 'hook', 'category', 'content'])) {
                 // $title = strip_tags($_POST['title']);
@@ -76,7 +88,7 @@ class PostController extends Controller
             ->ajoutLabelFor('hook', 'Chapô :')
             ->ajoutInput('text', 'hook', ['id' => 'hook', 'class' => '', 'placeholder' => 'Chapô', 'value' => $hook])
             ->ajoutLabelFor('category', 'Catégorie :')
-            ->ajoutSelect('category', ['1' => 'Forêt', '2' => 'Montagne', '3' => 'Lac', '4' => 'Océan'], ['id' => 'category', 'class' => ''])
+            ->ajoutSelect('category', ['1"' => 'Forêt', '2"' => 'Montagne', '3"' => 'Lac', '4"' => 'Océan'], ['id' => 'category', 'class' => ''])
             ->ajoutLabelFor('image', 'Illustration :')
             ->ajoutInput('file', 'image', ['id' => 'image', 'class' => '',  'accept' => "image/jpeg, image/png"])
             ->ajoutLabelFor('content', 'Contenu :')
@@ -104,7 +116,8 @@ class PostController extends Controller
 
         $title = isset($_POST['title']) ? strip_tags($_POST['title']) : $post->title;
         $hook = isset($_POST['hook']) ? strip_tags($_POST['hook']) : $post->hook;
-        $content = isset($_POST['content']) ? strip_tags($_POST['content']) : $post->content;
+        // $content = isset($_POST['content']) ? strip_tags($_POST['content']) : $post->content;
+        $content = isset($_POST['content']) ? $_POST['content'] : $post->content;
         $category = isset($_POST['category']) ? $_POST['category'] : $post->category;
         if(!empty($_POST)) {
             if(Form::validate($_POST, ['title', 'hook', 'category', 'content'])) {

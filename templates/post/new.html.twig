@@ -1,6 +1,14 @@
 {% extends "base.html.twig" %}
 
-{% block title %}{% endblock %}
+{% block title %}Nouvel article{% endblock %}
+
+{% block javascript %}
+    <script src="https://cdn.tiny.cloud/1/1ms6rpizsp12e6degzx3l17mhy64wcxmkblrl02qtavg01t0/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({
+        selector:'textarea',
+        language: 'fr_FR'
+    });</script>
+{% endblock %}
 
 {% block body %}
     <main class="visible">

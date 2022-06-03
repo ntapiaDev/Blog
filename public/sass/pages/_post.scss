@@ -46,7 +46,7 @@
             }
         }
 
-        input, select, textarea {
+        input, select {
             width: calc(67% - 4em);
             margin: .5em 2em;
             padding: 1em;
@@ -58,10 +58,6 @@
                 border-color: rgb(232, 186, 45);
                 outline: none;
             }
-        }
-        textarea {
-            width: calc(100% - 4em);
-            height: 8em;
         }
 
         .checkbox-box {
@@ -76,6 +72,7 @@
         button {
             margin-top: 1em;
             margin-left: 2em;
+            margin-bottom: 2em;
             padding: .75rem 1.5rem;
             border: 1px solid rgb(232, 186, 45);
             border-radius: 2em;
@@ -96,12 +93,21 @@
 
 .show-container {
     width: 75%;
+    margin-bottom: 1.5em;
     
-    & > p {
-        text-align: end;
-        color: rgb(105, 107, 110);
-        font-size: .9rem;
-        font-weight: 200;
+    .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+            color: rgb(105, 107, 110);
+            font-size: .9rem;
+            font-weight: 200;
+        }
+        .head-right p {
+            text-align: end;
+        }
 
         a {
             color: rgb(232, 186, 45);
@@ -111,6 +117,10 @@
                 text-decoration: underline;
             }
         }
+
+        img {
+            width: 150px;
+        }
     }
 
     .main-img {
@@ -118,13 +128,15 @@
         margin: 1em 0;
     }
 
-    .content {
-        display: flex;
-    }
-
     .author-info {
         width: 25%;
+        height: 500px;
+        margin-left: 2em;
+        margin-bottom: 2em;
+        border: 1px solid rgb(223, 225, 229);
+        border-radius: .3rem;
         text-align: center;
+        float: right;
 
         h4 {
             margin: 1.5em 0;
@@ -152,7 +164,126 @@
     }
 
     .post-info {
-        width: 75%;
+
+        p {
+            margin: .5em 0;
+            text-align: justify;
+            &:nth-child(1) {
+                text-transform: uppercase;
+                font-weight: 300;
+            }
+        }
+
+        h3 {
+            margin: 2em 0 1em;
+            &:nth-child(2) {
+                margin-top: 1.5em;
+            }
+        }
+
+        ul {
+            flex-direction: column;
+            li {
+                all: inherit;
+            }
+            a {
+                display: inline;
+            }
+        }
     }
     
+}
+
+.activities {
+    width: 90%;
+    color: rgb(70, 72, 74);
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+
+    h3 {
+        width: 92.75%;
+        padding-top: 1em;
+        border-top: .05em solid rgb(223, 225, 229);
+        margin: auto;
+    }
+
+    div {
+        width: 25%;
+        padding: 1.5em;
+
+        img {
+            width: 100%;
+        }
+
+        h4 {
+            margin: 1em 0 0;
+            color: rgb(70, 72, 74);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: .9rem;
+            font-weight: 200;
+            color: rgb(105, 107, 110);
+            &:nth-child(3) {
+                margin: .5em 0 1em;
+                color: rgb(232, 186, 45);
+                font-weight: 400;
+                font-style: italic;
+            }
+        }
+
+    }
+}
+
+.comments {
+    width: 100%;
+    color: rgb(70, 72, 74);
+    font-size: 2em;
+    font-weight: 500;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    
+    h3 {
+        width: 92.75%;
+        padding-top: 1em;
+        border-top: .05em solid rgb(223, 225, 229);
+        margin: auto;
+    }
+
+    .comments-container {
+        width: 75%;
+        margin: 1.5em auto;
+        border: 1px solid red;
+    }
+}
+
+//TinyMCE
+.new-container .tox {
+    width: calc(100% - 3.4em);
+    height: 4em;
+    margin-left: 1.7em;
+    border: 1px solid rgb(223, 225, 229);
+    border-radius: .3rem;
+
+    .tox-toolbar-overlord {
+        margin-left: 1em;
+    }
+    .tox-toolbar__group {
+        padding: .1em .4em;
+    }
+
+    button {
+        all:inherit;
+    }
+
+    .tox-statusbar__path {
+        display: none;
+    }
 }

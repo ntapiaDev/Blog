@@ -7,29 +7,82 @@
         <section>
             <h2>{{ post.title }}</h2>
             <div class="show-container">
-                <p>Article publié le {{ post.formated_created_at }}
-                    {% if post.formated_created_at != post.formated_updated_at %}
-                        - modifié le {{ post.formated_updated_at }}
-                    {% endif %}
-                </p>
-                {% if user.id == currentUser %}
-                    <p><a href="/post/edit/{{ post.slug }}">Editer cet article</a></p>
-                {% endif %}
+                <div class="head">
+                    <div class="head-left">
+                        {% if post.category == '1' %}
+                            <p><img src="/img/forest.jpg" alt="Catégorie forêt"></p>
+                        {% elseif post.category == '2' %}
+                            <p><img src="/img/mountain.jpg" alt="Catégorie montagne"></p>
+                        {% elseif post.category == '3' %}
+                            <p><img src="/img/lake.jpg" alt="Catégorie lac"></p>
+                        {% elseif post.category == '4' %}
+                            <p><img src="/img/ocean.jpg" alt="Catégorie océan"></p>
+                        {% endif %}
+                    </div>
+                    <div class="head-right">
+                        <p>Article publié le {{ post.formated_created_at }}
+                        {% if post.formated_created_at != post.formated_updated_at %}
+                            - modifié le {{ post.formated_updated_at }}
+                        {% endif %}
+                        </p>
+                        {% if user.id == currentUser %}
+                            <p><a href="/post/edit/{{ post.slug }}">Editer cet article</a></p>
+                        {% endif %}
+                    </div>
+                </div>
+                
                 <img src="/uploads/{{ post.image }}" alt="{{ post.title }}" class="main-img">
                 <div class="content">
-                    <div class="post-info">
-                        <p>{{ post.hook }}</p>
-                        <p>{{ post.content }}</p>
-                        
-                    </div>
+                    
                     <div class="author-info">
                         <h4>A propos de l'auteur :</h4>
                         <img src="/uploads/{{ user.avatar }}" alt="">
                         <p>{{ user.firstname }} {{ user.lastname }}</p>
                         <p>{{ user.hook }}</p>
+                        <div>
+                            <p>Messages : 12</p>
+                            <p>Commentaires : 46</p>
+                        </div>
+                    </div>
+                    <div class="post-info">
+                        <p>{{ post.hook }}</p>
+                        {{ post.content|raw }}
                     </div>
                 </div>
             </div>
+            <article class="activities">
+                <h3>Activités proposées</h3>
+                <div>
+                    <img src="/img/camping.png" alt="">
+                    <h4>Camping en plein air</h4>
+                    <p>Tout le temps</p>
+                    <p>Pour ceux qui aiment dormir à la belle étoile.</p>
+                </div>
+                <div>
+                    <img src="/img/boat.jpg" alt="">
+                    <h4>Activités nautiques</h4>
+                    <p>Journée</p>
+                    <p>Bateau, ski nautique, paddle ou simple baignade.</p>
+                </div>
+                <div>
+                    <img src="/img/ski.jpg" alt="">
+                    <h4>Sports de glisse</h4>
+                    <p>Journée</p>
+                    <p>Ski ou luge, pour les petits et les grands.</p>
+                </div>
+                <div>
+                    <img src="/img/fire.jpg" alt="">
+                    <h4>Feux de camp</h4>
+                    <p>Soirée</p>
+                    <p>Venez vous réchauffer au coin du feu.</p>
+                </div>
+            </article>
+            <aside class="comments">
+                <h3>Commentaires</h3>
+                <div class="comments-container">
+                    {{ commentForm|raw }}
+                </div>
+            </aside>
         </section>
     </main>
 {% endblock %}
