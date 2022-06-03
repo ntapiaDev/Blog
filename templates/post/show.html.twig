@@ -8,15 +8,15 @@
             <h2>{{ post.title }}</h2>
             <div class="show-container">
                 <div class="head">
-                    <div class="head-left">
+                    <div class="head-left"><p>Catégorie : 
                         {% if post.category == '1' %}
-                            <p><img src="/img/forest.jpg" alt="Catégorie forêt"></p>
+                            Forêt</p>
                         {% elseif post.category == '2' %}
-                            <p><img src="/img/mountain.jpg" alt="Catégorie montagne"></p>
+                            Montagne</p>
                         {% elseif post.category == '3' %}
-                            <p><img src="/img/lake.jpg" alt="Catégorie lac"></p>
+                            Lac</p>
                         {% elseif post.category == '4' %}
-                            <p><img src="/img/ocean.jpg" alt="Catégorie océan"></p>
+                            Océan</p>
                         {% endif %}
                     </div>
                     <div class="head-right">

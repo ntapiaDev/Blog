@@ -835,8 +835,15 @@ main section .contact-container ul li:hover {
 
 .show-container .head p {
   color: #696b6e;
-  font-size: .9rem;
+  font-size: .9em;
   font-weight: 200;
+}
+
+.show-container .head .head-left p {
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: 1em;
+  font-weight: 300;
 }
 
 .show-container .head .head-right p {
@@ -851,10 +858,6 @@ main section .contact-container ul li:hover {
 .show-container .head a:hover {
   color: #0056b3;
   text-decoration: underline;
-}
-
-.show-container .head img {
-  width: 150px;
 }
 
 .show-container .main-img {
@@ -934,7 +937,7 @@ main section .contact-container ul li:hover {
 }
 
 .activities {
-  width: 90%;
+  width: calc(75% + 3em);
   color: #46484a;
   font-size: 2rem;
   font-weight: 500;
@@ -947,7 +950,7 @@ main section .contact-container ul li:hover {
 }
 
 .activities h3 {
-  width: 92.75%;
+  width: calc(100% - 2.5em);
   padding-top: 1em;
   border-top: 0.05em solid #dfe1e5;
   margin: auto;
@@ -984,7 +987,7 @@ main section .contact-container ul li:hover {
 }
 
 .comments {
-  width: 100%;
+  width: 75%;
   color: #46484a;
   font-size: 2em;
   font-weight: 500;
@@ -997,14 +1000,14 @@ main section .contact-container ul li:hover {
 }
 
 .comments h3 {
-  width: 92.75%;
+  width: 100%;
   padding-top: 1em;
   border-top: 0.05em solid #dfe1e5;
   margin: auto;
 }
 
 .comments .comments-container {
-  width: 75%;
+  width: 100%;
   margin: 1.5em auto;
   border: 1px solid red;
 }
