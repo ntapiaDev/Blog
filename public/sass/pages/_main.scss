@@ -152,17 +152,17 @@ header {
     from {
         transform: scale(1.0);
     }
-    2% {
-        transform: scale(1.33);
-    }
-    4% {
-        transform: scale(1.0);
+    3% {
+        transform: scale(1.33) rotate(15deg);
     }
     6% {
-        transform: scale(1.33);
+        transform: scale(1.0)rotate(0deg);
     }
-    8% {
-        transform: scale(1.0);
+    9% {
+        transform: scale(1.33)rotate(-15deg);
+    }
+    12% {
+        transform: scale(1.0)rotate(0deg);
     }
     to {
         transform: scale(1.0);
