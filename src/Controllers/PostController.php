@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Core\Form;
+use App\Models\CommentModel;
 use App\Models\PostModel;
 use App\Models\UserModel;
 
@@ -22,19 +23,70 @@ class PostController extends Controller
 
         $user = $userModel->findOneById($post->user);
 
-        //Formulaire de commentaires :
-        $comment = isset($_POST['comment']) ? strip_tags($_POST['comment']) : '';
+        $commentModel = new CommentModel;
 
+        $comments = $commentModel->findAllByPostId($post->id);
+
+        //Traitement AJAX du formulaire :
+        if((isset($_POST['comment']))) {
+
+            if(!isset($_SESSION['user']['id'])) {
+                echo json_encode([
+                    'code' => '401',
+                    'message' => 'Merci de vous connecter'
+                ]);
+                exit;
+            }
+
+            if(empty($_POST['comment'])) {
+                echo json_encode([
+                    'code' => '400',
+                    'message' => 'Merci d\'écrire un commentaire'
+                ]);
+                exit;
+            }
+
+            if(!empty($_POST['id']) && $_POST['id'] === $post->id) {
+
+                $comment = new CommentModel;
+                $comment->setComment(strip_tags($_POST['comment']))
+                    ->setUser($_SESSION['user']['id'])
+                    ->setPost($_POST['id']);
+                // $comment->create();
+
+                $currentUser = $userModel->findOneById($_SESSION['user']['id']);
+
+                echo json_encode([
+                    'code' => '200',
+                    'message' => 'Commentaire envoyé',
+                    'avatar' => $currentUser->avatar,
+                    'user' => $currentUser->firstname . ' ' . $currentUser->lastname,
+                    'comment' => strip_tags($_POST['comment'])
+                ]);
+                exit;
+                
+            } else {
+                echo json_encode([
+                    'code' => '400',
+                    'message' => 'Erreur, merci de réessayer'
+                ]);
+                exit;
+            }
+        }
+
+        //Formulaire de commentaires :
         $form = new Form;
-        $form->debutForm()
-            ->ajoutLabelFor('comment', 'Ajouter un commentaire :')
-            ->ajoutInput('text', 'comment', ['id' => 'comment', 'class' => '', 'placeholder' => 'Votre commentaire', 'value' => $comment])
-            ->ajoutBouton('Envoyer', ['class' => ''])
+        $form->debutForm('post', '', ['id' => 'comment-form'])
+            ->ajoutInput('text', 'comment', ['id' => 'comment', 'class' => '', 'placeholder' => 'Ajouter un commentaire'])
+            ->ajoutInput('text', 'slug', ['id' => 'slug', 'class' => '', 'value' => $post->slug, 'hidden' => true])
+            ->ajoutInput('int', 'id', ['id' => 'id', 'class' => '', 'value' => $post->id, 'hidden' => true])
+            ->ajoutBouton('Envoyer', ['class' => 'comment-btn'])
             ->finForm();
 
         $this->twig->display('post/show.html.twig', [
             'post' => $post,
             'user' => $user,
+            'comments' => $comments,
             'currentUser' => isset($_SESSION['user']) ? $_SESSION['user']['id'] : '',
             'commentForm' => $form->create()
         ]);

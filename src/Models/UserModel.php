@@ -33,7 +33,7 @@ Class UserModel extends Model
      * Récupère le nom d'un user à partir de son id
      *
      * @param integer $id
-     * @return string
+     * @return mixed
      */
     public function findOneById(int $id)
     {

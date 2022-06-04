@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-Class UsersModel extends Model
+Class CommentModel extends Model
 {
     protected $id;
     protected $comment;
@@ -13,6 +13,12 @@ Class UsersModel extends Model
     {
         $class = str_replace(__NAMESPACE__.'\\', '', __CLASS__);
         $this->table = strtolower(str_replace('Model', '', $class));
+    }
+
+    public function findAllByPostId(int $id): array
+    {
+        $query = $this->request("SELECT c.*, DATE_FORMAT(c.created_at, '%d/%m/%Y à %Hh%i') as formated_created_at, u.firstname, u.lastname, u.avatar FROM $this->table c INNER JOIN user u ON c.user = u.id WHERE post = ? ORDER BY c.id", [$id]);
+        return $query->fetchAll();
     }
 
     /**

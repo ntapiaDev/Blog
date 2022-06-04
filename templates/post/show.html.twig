@@ -2,6 +2,10 @@
 
 {% block title %}{{ post.title }}{% endblock %}
 
+{% block javascript %}
+    <script src="/js/ajax/comment.js" defer></script>
+{% endblock %}
+
 {% block body %}
     <main class="visible">
         <section>
@@ -80,7 +84,21 @@
             <aside class="comments">
                 <h3>Commentaires</h3>
                 <div class="comments-container">
-                    {{ commentForm|raw }}
+                    <div class="comments-list">
+                        {% for comment in comments %}
+                            <p>
+                                <img src="/uploads/{{ comment.avatar }}" alt=""><span>{{ comment.firstname }} {{ comment.lastname }}</span> le <span>{{ comment.formated_created_at }}</span> : <span>{{ comment.comment }}</span>
+                            </p>
+                        {% endfor %}
+                    <template class="comments-template">
+                        <p>
+                            <img src="" alt=""><span></span> le <span></span> : <span></span>
+                        </p>
+                    </template>
+                    </div>
+                    <div class="comments-form">
+                        {{ commentForm|raw }}
+                    </div>
                 </div>
             </aside>
         </section>
