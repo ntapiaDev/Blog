@@ -31,10 +31,13 @@ function comment(e) {
                     let clone = document.importNode(template.content, true);
                     clone.querySelector('img').src = `/uploads/${response.avatar}`;
                     clone.querySelector('span:nth-child(2)').textContent = response.user;
-                    clone.querySelector('span:nth-child(3)').textContent = 'Heure';
+                    now = new Date();
+                    clone.querySelector('span:nth-child(3)').textContent = now.toLocaleDateString("fr") + ` à ${now.getHours()}h${now.getMinutes()}`;
                     clone.querySelector('span:nth-child(4)').textContent = response.comment;
                     document.querySelector('.comments-list').appendChild(clone);
-
+                    // +1 au nombre de commentaires
+                    document.querySelector('.comments h3 span').textContent = parseInt(document.querySelector('.comments h3 span').textContent) + 1;
+                    // Reset de l'input commentaire
                     document.querySelector('#comment').value = '';
                 }
 

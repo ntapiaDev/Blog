@@ -52,7 +52,7 @@ class PostController extends Controller
                 $comment->setComment(strip_tags($_POST['comment']))
                     ->setUser($_SESSION['user']['id'])
                     ->setPost($_POST['id']);
-                // $comment->create();
+                $comment->create();
 
                 $currentUser = $userModel->findOneById($_SESSION['user']['id']);
 

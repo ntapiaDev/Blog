@@ -82,7 +82,7 @@
                 </div>
             </article>
             <aside class="comments">
-                <h3>Commentaires</h3>
+                <h3>Commentaires (<span>{{ comments|length }}</span>)</h3>
                 <div class="comments-container">
                     <div class="comments-list">
                         {% for comment in comments %}
@@ -96,9 +96,11 @@
                         </p>
                     </template>
                     </div>
-                    <div class="comments-form">
-                        {{ commentForm|raw }}
-                    </div>
+                        {% if currentUser != '' %}
+                            <div class="comments-form">
+                                {{ commentForm|raw }}
+                            </div>
+                        {% endif %}
                 </div>
             </aside>
         </section>
