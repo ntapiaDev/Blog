@@ -44,6 +44,9 @@ function filter() {
 
                 const posts = document.querySelectorAll('.grid article');
                 posts.forEach(post => post.style.display = response.posts.includes(post.dataset.id) ? 'block' : 'none');
+
+                btns.forEach(btn => Array.from(btn.classList).includes('active') ? btn.classList.remove('active') : '');
+                this.classList.add('active');
             }
 
         } else {

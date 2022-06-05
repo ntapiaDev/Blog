@@ -204,9 +204,6 @@ main {
                 letter-spacing: .1rem;
                 font-weight: 300;
                 transition: color .3s ease;
-                &:nth-child(1) {
-                    color: rgb(232, 186, 45);
-                }
                 &:nth-child(6) a {
                     width: 1.5em;
                     height: 1.5em;
@@ -226,6 +223,9 @@ main {
                 }
                 &:hover {
                     cursor: pointer;
+                    color: rgb(232, 186, 45);
+                }
+                &.active {
                     color: rgb(232, 186, 45);
                 }
             }

@@ -478,10 +478,6 @@ main section ul li {
   transition: color .3s ease;
 }
 
-main section ul li:nth-child(1) {
-  color: #e8ba2d;
-}
-
 main section ul li:nth-child(6) a {
   width: 1.5em;
   height: 1.5em;
@@ -503,6 +499,10 @@ main section ul li:nth-child(6) a:hover {
 
 main section ul li:hover {
   cursor: pointer;
+  color: #e8ba2d;
+}
+
+main section ul li.active {
   color: #e8ba2d;
 }
 

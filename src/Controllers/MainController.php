@@ -23,7 +23,7 @@ class MainController extends Controller
         //FILTRE CATEGORY AJAX
         if(isset($_POST['category'])) {
             if($_POST['category'] !== '0') {
-                $posts = $postModel->findByCategory($_POST['category']);
+                $posts = $postModel->findIdByCategory($_POST['category']);
                 foreach($posts as $post) {
                     $displayPosts[] = $post->id;
                 }
