@@ -67,6 +67,22 @@ Class Form
                     return false;
                 }
             }
+            if($champ === 'image') {
+                $ext = pathinfo($form["image"]["name"], PATHINFO_EXTENSION);
+                if(!$ext) {
+                    $_SESSION['erreur'] = 'Merci d\'ajouter une image à votre article.';
+                    return false;
+                }
+                $authorized_ext = ['jpg', 'jpeg', 'jfif', 'pjpeg', 'pjp', 'png'];
+                if(!in_array($ext, $authorized_ext)) {
+                    $_SESSION['erreur'] = 'Votre fichier n\'est pas une image.';
+                    return false;
+                }
+                if($_FILES['image']['size'] >= 2000000) {
+                    $_SESSION['erreur'] = 'Votre fichier est trop gros (2 Mo maximum).';
+                    return false;
+                }
+            }
         }
         return true;
     }

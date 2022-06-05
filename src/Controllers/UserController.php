@@ -18,7 +18,13 @@ class UserController extends Controller
             header('Location: /user/login');
             exit;
         }
-        $this->twig->display('user/index.html.twig');
+
+        $userModel = new UserModel;
+        $user = $userModel->findOneById($_SESSION['user']['id']);
+
+        $this->twig->display('user/index.html.twig', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -88,7 +94,7 @@ class UserController extends Controller
         }
 
         if(!empty($_POST)) {
-            if(Form::validate($_POST, ['email', 'password', 'firstname', 'lastname', 'cgu'])) {
+            if(Form::validate($_POST, ['email', 'password', 'firstname', 'lastname', 'cgu']) && $_FILES['image']['name'] === '' || Form::validate($_FILES, ['image'])) {
                 $email = strip_tags($_POST['email']);
                 $password = password_hash($_POST['password'], PASSWORD_ARGON2I);
                 $firstname = strip_tags($_POST['firstname']);
@@ -105,6 +111,15 @@ class UserController extends Controller
                     $hook = strip_tags($_POST['hook']);
                     $user->setHook($hook);
                 }
+
+                if($_FILES['image']['name'] !== '') {
+                    $upload_dir = ROOT . '/public/uploads/';
+                    $ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+                    $file_name = basename(md5(rand()) . '.' . $ext);
+                    $upload_file = $upload_dir . $file_name;
+                    move_uploaded_file($_FILES["image"]["tmp_name"], $upload_file);
+                    $user->setAvatar($file_name);
+                }
     
                 $user->create();
                 header('Location: /user/login');
@@ -118,13 +133,13 @@ class UserController extends Controller
 
         $form = new Form;
 
-        $form->debutForm('post', '#', ['enctype' => 'multipart/formdata'])
+        $form->debutForm('post', '#', ['enctype' => 'multipart/form-data'])
             ->ajoutLabelFor('firstname', 'Votre prénom :')
             ->ajoutInput('text', 'firstname', ['id' => 'firstname', 'class' => '', 'placeholder' => 'Prénom', 'value' => $firstname])
             ->ajoutLabelFor('lastname', 'Votre nom :')
             ->ajoutInput('text', 'lastname', ['id' => 'lastname', 'class' => '', 'placeholder' => 'Nom', 'value' => $lastname])
             ->ajoutLabelFor('avatar', 'Votre avatar :')
-            ->ajoutInput('file', 'avatar', ['id' => 'avatar', 'class' => '',  'accept' => "image/gif, image/jpeg, image/png"])
+            ->ajoutInput('file', 'image', ['id' => 'avatar', 'class' => '',  'accept' => "image/gif, image/jpeg, image/png"])
             ->ajoutLabelFor('hook', 'Votre accroche :')
             ->ajoutInput('text', 'hook', ['id' => 'hook', 'class' => '', 'placeholder' => 'Accroche', 'value' => $hook])
             ->ajoutLabelFor('email', 'Votre email :')

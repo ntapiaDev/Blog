@@ -19,6 +19,11 @@ class PostController extends Controller
 
         $post = $postModel->findOneBySlug($slug);
 
+        if(!$post) {
+            header('Location: /');
+            exit;
+        }
+
         $userModel = new UserModel;
 
         $user = $userModel->findOneById($post->user);
@@ -104,7 +109,7 @@ class PostController extends Controller
         // $content = isset($_POST['content']) ? strip_tags($_POST['content']) : '';
         $content = isset($_POST['content']) ? $_POST['content'] : '';
         if(!empty($_POST)) {
-            if(Form::validate($_POST, ['title', 'hook', 'category', 'content'])) {
+            if(Form::validate($_POST, ['title', 'hook', 'category', 'content']) && Form::validate($_FILES, ['image'])) {
                 // $title = strip_tags($_POST['title']);
                 // $hook = strip_tags($_POST['hook']);
                 // $content = strip_tags($_POST['content']);
@@ -172,7 +177,7 @@ class PostController extends Controller
         $content = isset($_POST['content']) ? $_POST['content'] : $post->content;
         $category = isset($_POST['category']) ? $_POST['category'] : $post->category;
         if(!empty($_POST)) {
-            if(Form::validate($_POST, ['title', 'hook', 'category', 'content'])) {
+            if(Form::validate($_POST, ['title', 'hook', 'category', 'content']) && $_FILES['image']['name'] === '' || Form::validate($_FILES, ['image'])) {
 
                 $newPost = new PostModel;
                 $newPost->setId($post->id)

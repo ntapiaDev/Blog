@@ -1078,6 +1078,13 @@ main section .contact-container ul li:hover {
   width: 60%;
 }
 
+.comments .comments-container .comments-error {
+  margin-top: 1.5em;
+  color: #696b6e;
+  font-size: .6em;
+  text-transform: uppercase;
+}
+
 .comments .comments-container .comments-form {
   margin-top: 1em;
   font-size: .5em;
