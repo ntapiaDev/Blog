@@ -31,6 +31,11 @@ Class PostModel extends Model
         return $this->request("SELECT *, DATE_FORMAT(created_at, '%d/%m/%Y à %Hh%i') as formated_created_at, DATE_FORMAT(updated_at, '%d/%m/%Y à %Hh%i') as formated_updated_at FROM $this->table WHERE slug = ?", [$slug])->fetch();
     }
 
+    public function findByCategory(int $id): array
+    {
+        return $this->request("SELECT *, DATE_FORMAT(created_at, '%d/%m/%Y à %Hh%i') as formated_created_at FROM " . $this->table . ' WHERE category = ?', [$id])->fetchAll();
+    }
+
     /**
      * Get the value of id
      */ 

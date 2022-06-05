@@ -20,6 +20,27 @@ class MainController extends Controller
 
         $postModel = new PostModel;
 
+        //FILTRE CATEGORY AJAX
+        if(isset($_POST['category'])) {
+            if($_POST['category'] !== '0') {
+                $posts = $postModel->findByCategory($_POST['category']);
+                foreach($posts as $post) {
+                    $displayPosts[] = $post->id;
+                }
+            } else {
+                $posts = $postModel->findAll();
+                foreach($posts as $post) {
+                    $displayPosts[] = $post->id;
+                }
+            }
+            
+            echo json_encode([
+                'code' => 200,
+                'posts' => $displayPosts
+            ]);
+            exit;
+        }
+
         $posts = $postModel->findAll();
 
         $this->twig->display('main/index.html.twig', [

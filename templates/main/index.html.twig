@@ -46,18 +46,18 @@
         <section id="destinations">
             <h2>Nos destinations</h2>
             <ul>
-                <li>Tout voir</li>
-                <li>Forêt</li>
-                <li>Montagne</li>
-                <li>Lac</li>
-                <li>Océan</li>
+                <li data-category="0">Tout voir</li>
+                <li data-category="1">Forêt</li>
+                <li data-category="2">Montagne</li>
+                <li data-category="3">Lac</li>
+                <li data-category="4">Océan</li>
                 {% if user.roles == 'ROLE_ADMIN' %}
                     <li><a href="/post/new"><span class="fa-solid fa-plus"></span></a></li>
                 {% endif %}
             </ul>
             <div class="grid">
                 {% for post in posts|reverse %}
-                    <article>
+                    <article data-id="{{ post.id }}">
                         <img src="/uploads/{{ post.image }}" alt="">
                         <div class="img-hover">
                             <h3>{{ post.title }}</h3>
