@@ -39,7 +39,8 @@ Class Main
 
             } else {
                 http_response_code(404);
-                echo "La page recherchée n'existe pas";
+                header('Location: /main/notfound');
+                exit;
             }
 
         } else {

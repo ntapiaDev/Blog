@@ -200,7 +200,7 @@ class PostController extends Controller
 
         $post = $postModel->findOneBySlug($slug);
 
-        if(!isset($_SESSION['user']) || $post->user !== $_SESSION['user']['id']) {
+        if(!isset($_SESSION['user']) || $post->user !== $_SESSION['user']['id'] && $_SESSION['user']['roles'] !== 'ROLE_ADMIN') {
             header('Location: /main/forbidden');
             exit;
         }
@@ -265,5 +265,21 @@ class PostController extends Controller
             'message' => isset($_SESSION['erreur']) ? $_SESSION['erreur'] : ''
         ]);
         unset($_SESSION['erreur']);
+    }
+
+    public function delete($slug)
+    {
+        $postModel = new PostModel;
+
+        $post = $postModel->findOneBySlug($slug);
+
+        if(!isset($_SESSION['user']) || $post->user !== $_SESSION['user']['id'] && $_SESSION['user']['roles'] !== 'ROLE_ADMIN') {
+            header('Location: /main/forbidden');
+            exit;
+        }
+
+        $postModel->delete($post->id);
+        header('Location: /#destinations');
+        exit;
     }
 }

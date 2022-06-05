@@ -1087,10 +1087,13 @@ main section .contact-container ul li:hover {
   background-color: #e8ba2d;
   color: white;
   border-radius: 50%;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .comments .comments-container .comments-list p span:nth-child(5):hover {
   cursor: pointer;
+  background-color: #d5a523;
 }
 
 .comments .comments-container .comments-error {
