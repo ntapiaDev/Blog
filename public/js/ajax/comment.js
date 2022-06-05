@@ -2,9 +2,16 @@ window.onload = () => {
     const btn = document.querySelector('.comment-btn');
     btn.addEventListener('click', comment);
 
-    //DELETE
+    //DELETE comment
     const deleteBtns = document.querySelectorAll('.delete-btn');
     deleteBtns.forEach(deleteBtn => deleteBtn.addEventListener('click', deleteComment));
+
+    //DELETE article
+    const button = document.querySelector('.delete-post');
+    const abord = document.querySelector('.abord');
+    const modale = document.querySelector('.modale');
+    button.addEventListener('click', () => modale.classList.add('visible'));
+    abord.addEventListener('click', () => modale.classList.remove('visible'));
 }
 
 function comment(e) {
@@ -45,6 +52,9 @@ function comment(e) {
                     document.querySelector('.comments-list').appendChild(clone);
                     // +1 au nombre de commentaires
                     document.querySelector('.comments h3 span').textContent = parseInt(document.querySelector('.comments h3 span').textContent) + 1;
+                    if(response.myPost) {
+                        document.querySelector('.author-info span').textContent = parseInt(document.querySelector('.author-info span').textContent) + 1;
+                    }
                     // Reset de l'input commentaire
                     document.querySelector('#comment').value = '';
                 }
@@ -57,6 +67,8 @@ function comment(e) {
 }
 
 function deleteComment(e) {
+
+    console.log('test');
 
     const slug = document.querySelector('#slug').value;
 
@@ -81,6 +93,9 @@ function deleteComment(e) {
                     this.parentNode.remove();
                     // -1 au nombre de commentaires
                     document.querySelector('.comments h3 span').textContent = parseInt(document.querySelector('.comments h3 span').textContent) - 1;
+                    if(response.myPost) {
+                        document.querySelector('.author-info span').textContent = parseInt(document.querySelector('.author-info span').textContent) - 1;
+                    }
                 }
             } else {
                 // Le serveur a renvoyé un status d'erreur

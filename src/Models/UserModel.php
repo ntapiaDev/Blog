@@ -41,6 +41,28 @@ Class UserModel extends Model
     }
 
     /**
+     * Récupère la liste des articles d'un utilisateur
+     *
+     * @param integer $id
+     * @return array
+     */
+    public function getPosts(int $id): array
+    {
+        return $this->request("SELECT * FROM post WHERE user = ?", [$id])->fetchAll();
+    }
+
+    /**
+     * Récupère la liste des commentaires d'un utilisateur
+     *
+     * @param integer $id
+     * @return array
+     */
+    public function getComments(int $id): array
+    {
+        return $this->request("SELECT * FROM comment WHERE user = ?", [$id])->fetchAll();
+    }
+
+    /**
      * Crée la session utilisateur à la connexion
      *
      * @return void

@@ -27,6 +27,8 @@ class PostController extends Controller
         $userModel = new UserModel;
 
         $user = $userModel->findOneById($post->user);
+        $userPosts = $userModel->getPosts($post->user);
+        $userComments = $userModel->getComments($post->user);
 
         $commentModel = new CommentModel;
 
@@ -54,9 +56,12 @@ class PostController extends Controller
             $commentModel = new CommentModel;
             $comment = $commentModel->delete($_POST['commentId']);
 
+            $isMyPost = $post->user == $_SESSION['user']['id'];
+
             echo json_encode([
                 'code' => '200',
-                'message' => 'Commentaire supprimé'
+                'message' => 'Commentaire supprimé',
+                'myPost' => $isMyPost
             ]);
             exit;
         }
@@ -93,13 +98,16 @@ class PostController extends Controller
 
                 $currentUser = $userModel->findOneById($_SESSION['user']['id']);
 
+                $isMyPost = $post->user == $_SESSION['user']['id'];
+
                 echo json_encode([
                     'code' => '200',
                     'message' => 'Commentaire envoyé',
                     'avatar' => $currentUser->avatar,
                     'user' => $currentUser->firstname . ' ' . $currentUser->lastname,
                     'comment' => strip_tags($_POST['comment']),
-                    'id' => $newComment->id
+                    'id' => $newComment->id,
+                    'myPost' => $isMyPost
                 ]);
                 exit;
                 
@@ -124,6 +132,8 @@ class PostController extends Controller
         $this->twig->display('post/show.html.twig', [
             'post' => $post,
             'user' => $user,
+            'userPosts' => count($userPosts),
+            'userComments' => count($userComments),
             'comments' => $comments,
             'currentUser' => isset($_SESSION['user']) ? $_SESSION['user']['id'] : '',
             'userRole' => isset($_SESSION['user']) ? $_SESSION['user']['roles'] : '',

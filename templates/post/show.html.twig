@@ -4,7 +4,6 @@
 
 {% block javascript %}
     <script src="/js/ajax/comment.js" defer></script>
-    <script src="/js/delete.js" defer></script>
 {% endblock %}
 
 {% block body %}
@@ -45,8 +44,8 @@
                         <p>{{ user.firstname }} {{ user.lastname }}</p>
                         <p>{{ user.hook }}</p>
                         <div>
-                            <p>Messages : 12</p>
-                            <p>Commentaires : 46</p>
+                            <p>Messages : {{ userPosts }}</p>
+                            <p>Commentaires : <span>{{ userComments }}</span></p>
                         </div>
                     </div>
                     <div class="post-info">
