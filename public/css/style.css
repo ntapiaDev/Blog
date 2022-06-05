@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
-.user-link .user-span, header .scroll a, main section ul li:nth-child(6) a, main section .grid article .img-hover, main section .contact-container ul li, .comments .comments-container .comments-list p span:nth-child(5) {
+.user-link .user-span, header .scroll a, main section ul li:nth-child(6) a, main section .grid article .img-hover, main section .contact-container ul li, .comments .comments-container .comments-list p span:nth-child(5), .modale {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -850,12 +850,13 @@ main section .contact-container ul li:hover {
   text-align: end;
 }
 
-.show-container .head a {
+.show-container .head a, .show-container .head span {
   color: #e8ba2d;
   text-decoration: none;
 }
 
-.show-container .head a:hover {
+.show-container .head a:hover, .show-container .head span:hover {
+  cursor: pointer;
   color: #0056b3;
   text-decoration: underline;
 }
@@ -1145,6 +1146,60 @@ main section .contact-container ul li:hover {
 }
 
 .comments .comments-container .comments-form form button:hover {
+  cursor: pointer;
+  background-color: #d5a523;
+}
+
+.modale {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  display: none;
+}
+
+.modale.visible {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.modale-container {
+  padding: 2em;
+  background-color: white;
+  border-radius: 1em;
+  color: #46484a;
+}
+
+.modale-container div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.modale-container div a, .modale-container div p {
+  margin-top: 2em;
+  padding: .75rem 1.5rem;
+  border: 1px solid #e8ba2d;
+  border-radius: 2em;
+  background-color: #e8ba2d;
+  color: white;
+  font-size: .9rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 400;
+  letter-spacing: .2rem;
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+
+.modale-container div a:hover, .modale-container div p:hover {
   cursor: pointer;
   background-color: #d5a523;
 }

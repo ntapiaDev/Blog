@@ -115,10 +115,11 @@
             text-align: end;
         }
 
-        a {
+        a, span {
             color: rgb(232, 186, 45);
             text-decoration: none;
             &:hover {
+                cursor: pointer;
                 color: rgb(0, 86, 179);
                 text-decoration: underline;
             }
@@ -373,6 +374,52 @@
                         cursor: pointer;
                         background-color: rgb(213, 165, 35);
                     }
+                }
+            }
+        }
+    }
+}
+
+.modale {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 10;
+    @extend %flex-center;
+    display: none;
+    &.visible {
+        display: flex;
+    }
+
+    &-container {
+        padding: 2em;
+        background-color: rgb(255, 255, 255);
+        border-radius: 1em;
+        color: rgb(70, 72, 74);
+
+        div {
+            display: flex;
+            justify-content: space-evenly;
+
+            a, p {
+                margin-top: 2em;
+                padding: .75rem 1.5rem;
+                border: 1px solid rgb(232, 186, 45);
+                border-radius: 2em;
+                background-color: rgb(232, 186, 45);
+                color: rgb(255, 255, 255);
+                font-size: .9rem;
+                text-transform: uppercase;
+                text-decoration: none;
+                font-weight: 400;
+                letter-spacing: .2rem;
+                transition: background-color 0.3s ease;
+                &:hover {
+                    cursor: pointer;
+                    background-color: rgb(213, 165, 35);
                 }
             }
         }

@@ -4,6 +4,7 @@
 
 {% block javascript %}
     <script src="/js/ajax/comment.js" defer></script>
+    <script src="/js/delete.js" defer></script>
 {% endblock %}
 
 {% block body %}
@@ -30,7 +31,7 @@
                         {% endif %}
                         </p>
                         {% if user.id == currentUser or userRole == 'ROLE_ADMIN' %}
-                            <p><a href="/post/edit/{{ post.slug }}">Editer cet article</a> - <a href="/post/delete/{{ post.slug }}">Supprimer cet article</a></p>
+                            <p><a href="/post/edit/{{ post.slug }}">Editer cet article</a> - <span class="delete-post">Supprimer cet article</span></p>
                         {% endif %}
                     </div>
                 </div>
@@ -112,5 +113,13 @@
                 </div>
             </aside>
         </section>
+        <aside class="modale">
+            <div class="modale-container">
+                <p>Voulez-vous vraiment supprimer cet article ?</p>
+                <div>
+                    <a href="/post/delete/{{ post.slug }}">Oui</a><p class="abord">Annuler</p>
+                </div>
+            </div>
+        </aside>
     </main>
 {% endblock %}
