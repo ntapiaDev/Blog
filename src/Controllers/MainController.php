@@ -32,4 +32,9 @@ class MainController extends Controller
     {
         $this->twig->display('main/forbidden.html.twig');
     }
+
+    public function notfound()
+    {
+        $this->twig->display('main/notfound.html.twig');
+    }
 }

@@ -1,6 +1,10 @@
 window.onload = () => {
     const btn = document.querySelector('.comment-btn');
     btn.addEventListener('click', comment);
+
+    //DELETE
+    const deleteBtns = document.querySelectorAll('.delete-btn');
+    deleteBtns.forEach(deleteBtn => deleteBtn.addEventListener('click', deleteComment));
 }
 
 function comment(e) {
@@ -34,6 +38,10 @@ function comment(e) {
                     now = new Date();
                     clone.querySelector('span:nth-child(3)').textContent = now.toLocaleDateString("fr") + ` à ${now.getHours()}h${now.getMinutes()}`;
                     clone.querySelector('span:nth-child(4)').textContent = response.comment;
+                    if(clone.querySelector('span:nth-child(5)')) {
+                        clone.querySelector('span:nth-child(5)').dataset.commentId = response.id;
+                        clone.querySelector('span:nth-child(5)').addEventListener('click', deleteComment);
+                    }
                     document.querySelector('.comments-list').appendChild(clone);
                     // +1 au nombre de commentaires
                     document.querySelector('.comments h3 span').textContent = parseInt(document.querySelector('.comments h3 span').textContent) + 1;
@@ -41,6 +49,39 @@ function comment(e) {
                     document.querySelector('#comment').value = '';
                 }
 
+            } else {
+                // Le serveur a renvoyé un status d'erreur
+            }
+        }
+    }
+}
+
+function deleteComment(e) {
+
+    const slug = document.querySelector('#slug').value;
+
+    console.log(this.dataset);
+    let data = new FormData();
+    data.append('commentId', this.dataset.commentId);
+
+    let xhr = new XMLHttpRequest;
+    xhr.open('POST', `/post/show/${slug}`, true);
+    xhr.setRequestHeader('X-Requested-With', 'xmlhttprequest');
+    xhr.send(data);
+
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+
+                let response = JSON.parse(xhr.responseText)
+
+                console.log(response);
+
+                if(response.code === '200') {
+                    this.parentNode.remove();
+                    // -1 au nombre de commentaires
+                    document.querySelector('.comments h3 span').textContent = parseInt(document.querySelector('.comments h3 span').textContent) - 1;
+                }
             } else {
                 // Le serveur a renvoyé un status d'erreur
             }

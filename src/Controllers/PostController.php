@@ -20,7 +20,7 @@ class PostController extends Controller
         $post = $postModel->findOneBySlug($slug);
 
         if(!$post) {
-            header('Location: /');
+            header('Location: /main/notfound');
             exit;
         }
 
@@ -31,6 +31,35 @@ class PostController extends Controller
         $commentModel = new CommentModel;
 
         $comments = $commentModel->findAllByPostId($post->id);
+
+        //DELETE comment
+        if((isset($_POST['commentId']))) {
+
+            if(!isset($_SESSION['user']['id'])) {
+                echo json_encode([
+                    'code' => '401',
+                    'message' => 'Merci de vous connecter'
+                ]);
+                exit;
+            }
+
+            if($_SESSION['user']['roles'] !== 'ROLE_ADMIN') {
+                echo json_encode([
+                    'code' => '403',
+                    'message' => 'Action interdite'
+                ]);
+                exit;
+            }
+
+            $commentModel = new CommentModel;
+            $comment = $commentModel->delete($_POST['commentId']);
+
+            echo json_encode([
+                'code' => '200',
+                'message' => 'Commentaire supprimé'
+            ]);
+            exit;
+        }
 
         //Traitement AJAX du formulaire :
         if((isset($_POST['comment']))) {
@@ -59,6 +88,9 @@ class PostController extends Controller
                     ->setPost($_POST['id']);
                 $comment->create();
 
+                $CommentModel = new CommentModel;
+                $newComment = $CommentModel->findLastComment($_SESSION['user']['id']);
+
                 $currentUser = $userModel->findOneById($_SESSION['user']['id']);
 
                 echo json_encode([
@@ -66,7 +98,8 @@ class PostController extends Controller
                     'message' => 'Commentaire envoyé',
                     'avatar' => $currentUser->avatar,
                     'user' => $currentUser->firstname . ' ' . $currentUser->lastname,
-                    'comment' => strip_tags($_POST['comment'])
+                    'comment' => strip_tags($_POST['comment']),
+                    'id' => $newComment->id
                 ]);
                 exit;
                 
@@ -93,6 +126,7 @@ class PostController extends Controller
             'user' => $user,
             'comments' => $comments,
             'currentUser' => isset($_SESSION['user']) ? $_SESSION['user']['id'] : '',
+            'userRole' => isset($_SESSION['user']) ? $_SESSION['user']['roles'] : '',
             'commentForm' => $form->create()
         ]);
     }

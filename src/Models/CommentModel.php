@@ -22,6 +22,18 @@ Class CommentModel extends Model
     }
 
     /**
+     * Sélectionne le dernier commentaire d'un utilisateur
+     *
+     * @param integer $id de l'utilisateur
+     * @return Comment
+     */
+    public function findLastComment(int $id)
+    {
+        $query = $this->request("SELECT * FROM $this->table WHERE user = ? ORDER BY id DESC LIMIT 1", [$id]);
+        return $query->fetch();
+    }
+
+    /**
      * Get the value of id
      */ 
     public function getId()

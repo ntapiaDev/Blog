@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Erreur{% endblock %}
+
+{% block header %}
+    <header class="header__main">
+        <section id="header">
+            <nav>
+                <p>Destinations</p>
+                <ul>
+                    <li><a href="/#header" class="active active-light" data-color="light">Accueil</a></li>
+                    <li><a href="/#destinations" data-color="light">Destinations</a></li>
+                    <li><a href="" data-color="light">A propos</a></li>
+                    <li><a href="/#contact" data-color="light">Contact</a></li>
+                    <a href="/user" class="user-link" data-color="light"><span class="user-span"><span class="fa-solid fa-user"></span></span></a>
+                </ul>
+            </nav>
+            <div class="title">
+                <h1>404 : Page Not Found !</h1>
+            </div>
+        </section>
+    </header>
+{% endblock %}
+{% block body %}
+    <main>
+        <section id="destinations"></section>
+    </main>
+{% endblock %}
+{% block footer %}{% endblock %}

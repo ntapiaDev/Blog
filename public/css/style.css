@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
-.user-link .user-span, header .scroll a, main section ul li:nth-child(6) a, main section .grid article .img-hover, main section .contact-container ul li {
+.user-link .user-span, header .scroll a, main section ul li:nth-child(6) a, main section .grid article .img-hover, main section .contact-container ul li, .comments .comments-container .comments-list p span:nth-child(5) {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1076,6 +1076,21 @@ main section .contact-container ul li:hover {
 
 .comments .comments-container .comments-list p span:nth-child(4) {
   width: 60%;
+  margin-left: .5em;
+}
+
+.comments .comments-container .comments-list p span:nth-child(5) {
+  width: 2.15em;
+  height: 2em;
+  margin: .5em;
+  padding: .25em;
+  background-color: #e8ba2d;
+  color: white;
+  border-radius: 50%;
+}
+
+.comments .comments-container .comments-list p span:nth-child(5):hover {
+  cursor: pointer;
 }
 
 .comments .comments-container .comments-error {
