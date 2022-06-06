@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Administration{% endblock %}
+
+{% block javascript %}
+    <script src="/js/admin.js" defer></script>
+{% endblock %}
+
+{% block body %}
+    <main class="visible">
+        <section>
+            <h2>Administration</h2>
+            <div class="admin-container">
+                <ul>
+                    <li>Articles</li>
+                    <li>Commentaires</li>
+                    <li>Utilisateurs</li>
+                </ul>
+                <article class="posts">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Titre</th>
+                            <th>Accroche</th>
+                            <th>Catégorie</th>
+                            <th>Auteur</th>
+                            <th>Commentaires</th>
+                            <th>Date de création</th>
+                            <th>Action</th>
+                        </tr>
+                        {% for post in posts %}
+                            <tr>
+                                <th><img src="/uploads/{{ post.image }}" alt="{{ post.title }}"></th>
+                                <th><a href="/post/show/{{ post.slug }}">{{ post.title }}</a></th>
+                                <th>{{ post.hook }}</th>
+                                <th>{{ post.category_name }}</th>
+                                <th>{{ post.firstname }} {{ post.lastname }}</th>
+                                <th>{{ post.comments }}</th>
+                                <th>{{ post.formated_created_at }}</th>
+                                <th><a href="/post/edit/{{ post.slug }}"><span class="fa-solid fa-pen-to-square"></span></a><span class="fa-solid fa-trash-can" data-slug={{ post.slug }}></span></th>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </article>
+                <article class="comments"></article>
+                <article class="users"></article>
+            </div>
+        </section>
+        <aside class="modale">
+            <div class="modale-container">
+                <p>Voulez-vous vraiment supprimer cet article ?</p>
+                <div>
+                    <a href="">Oui</a><p class="abord">Annuler</p>
+                </div>
+            </div>
+        </aside>
+    </main>
+{% endblock %}

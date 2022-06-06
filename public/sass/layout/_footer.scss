@@ -17,20 +17,22 @@ footer {
 
         ul {
             display: flex;
+        }
+        > p {
+            margin-top: -1em;
+        }
+        li, > p {
+            list-style: none;
+            text-transform: uppercase;
+            font-size: .9rem;
+            letter-spacing: .1rem;
+            font-weight: 200;
 
-            li {
-                list-style: none;
-                text-transform: uppercase;
-                font-size: .9rem;
-                letter-spacing: .1rem;
-                font-weight: 200;
-
-                a {
-                    padding: 1em;
-                    text-decoration: none;
-                    &:hover {
-                        color: rgb(232, 186, 45);
-                    }
+            a {
+                padding: 1em;
+                text-decoration: none;
+                &:hover {
+                    color: rgb(232, 186, 45);
                 }
             }
         }

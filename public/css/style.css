@@ -91,7 +91,11 @@ footer section ul {
   display: flex;
 }
 
-footer section ul li {
+footer section > p {
+  margin-top: -1em;
+}
+
+footer section li, footer section > p {
   list-style: none;
   text-transform: uppercase;
   font-size: .9rem;
@@ -99,12 +103,12 @@ footer section ul li {
   font-weight: 200;
 }
 
-footer section ul li a {
+footer section li a, footer section > p a {
   padding: 1em;
   text-decoration: none;
 }
 
-footer section ul li a:hover {
+footer section li a:hover, footer section > p a:hover {
   color: #e8ba2d;
 }
 
@@ -149,6 +153,46 @@ footer section .container ul li:nth-child(3) {
 footer section .container ul li:hover {
   cursor: pointer;
   color: #e8ba2d;
+}
+
+.admin-container {
+  width: 75%;
+  min-height: 50vh;
+}
+
+.admin-container ul {
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.admin-container table {
+  width: 100%;
+  margin-bottom: 2em;
+  border-spacing: 0;
+  color: #46484a;
+}
+
+.admin-container table th {
+  border-bottom: 1px solid #dfe1e5;
+  padding-top: .25em;
+}
+
+.admin-container table img {
+  width: 50px;
+}
+
+.admin-container table span:nth-child(1) {
+  color: #e8ba2d;
+}
+
+.admin-container table span:nth-child(2) {
+  margin-left: .5em;
+  color: #dc3545;
+}
+
+.admin-container table span:nth-child(2):hover {
+  cursor: pointer;
 }
 
 html {

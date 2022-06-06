@@ -26,6 +26,12 @@ Class PostModel extends Model
         return $query->fetchAll();
     }
 
+    public function findAllWithDetails()
+    {
+        $query = $this->request("SELECT p.*, DATE_FORMAT(p.created_at, '%d/%m/%Y à %Hh%i') as formated_created_at, u.firstname, u.lastname, c.type as category_name FROM $this->table p INNER JOIN user u ON p.user = u.id INNER JOIN category c ON p.category = c.id");
+        return $query->fetchAll();
+    }
+
     public function findOneBySlug(string $slug)
     {
         return $this->request("SELECT *, DATE_FORMAT(created_at, '%d/%m/%Y à %Hh%i') as formated_created_at, DATE_FORMAT(updated_at, '%d/%m/%Y à %Hh%i') as formated_updated_at FROM $this->table WHERE slug = ?", [$slug])->fetch();

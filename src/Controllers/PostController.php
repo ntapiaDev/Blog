@@ -15,6 +15,12 @@ class PostController extends Controller
      */
     public function show($slug)
     {   
+        if(isset($_SESSION['user'])) {
+            $loggedUser = $_SESSION['user'];
+        } else {
+            $loggedUser = [];
+        }
+
         $postModel = new PostModel;
 
         $post = $postModel->findOneBySlug($slug);
@@ -131,12 +137,13 @@ class PostController extends Controller
 
         $this->twig->display('post/show.html.twig', [
             'post' => $post,
-            'user' => $user,
+            'author' => $user,
             'userPosts' => count($userPosts),
             'userComments' => count($userComments),
             'comments' => $comments,
             'currentUser' => isset($_SESSION['user']) ? $_SESSION['user']['id'] : '',
             'userRole' => isset($_SESSION['user']) ? $_SESSION['user']['roles'] : '',
+            'user' => $loggedUser,
             'commentForm' => $form->create()
         ]);
     }
@@ -147,6 +154,7 @@ class PostController extends Controller
             header('Location: /main/forbidden');
             exit;
         }
+        $user = $_SESSION['user'];
 
         $title = isset($_POST['title']) ? strip_tags($_POST['title']) : '';
         $hook = isset($_POST['hook']) ? strip_tags($_POST['hook']) : '';
@@ -199,13 +207,15 @@ class PostController extends Controller
 
         $this->twig->display('post/new.html.twig', [
             'newForm' => $form->create(),
-            'message' => isset($_SESSION['erreur']) ? $_SESSION['erreur'] : ''
+            'message' => isset($_SESSION['erreur']) ? $_SESSION['erreur'] : '',
+            'user' => $user
         ]);
         unset($_SESSION['erreur']);
     }
 
     public function edit($slug)
     {   
+        
         $postModel = new PostModel;
 
         $post = $postModel->findOneBySlug($slug);
@@ -214,6 +224,7 @@ class PostController extends Controller
             header('Location: /main/forbidden');
             exit;
         }
+        $user = $_SESSION['user'];
 
         $title = isset($_POST['title']) ? strip_tags($_POST['title']) : $post->title;
         $hook = isset($_POST['hook']) ? strip_tags($_POST['hook']) : $post->hook;
@@ -272,7 +283,8 @@ class PostController extends Controller
         $this->twig->display('post/edit.html.twig', [
             'image' => $post->image,
             'editForm' => $form->create(),
-            'message' => isset($_SESSION['erreur']) ? $_SESSION['erreur'] : ''
+            'message' => isset($_SESSION['erreur']) ? $_SESSION['erreur'] : '',
+            'user' => $user
         ]);
         unset($_SESSION['erreur']);
     }
@@ -289,7 +301,7 @@ class PostController extends Controller
         }
 
         $postModel->delete($post->id);
-        header('Location: /#destinations');
+        $_SERVER['HTTP_REFERER'] === 'http://blog/admin' ? header('Location: '. $_SERVER['HTTP_REFERER']) : header('Location: /#destinations');
         exit;
     }
 }

@@ -1,0 +1,37 @@
+.admin-container {
+    width: 75%;
+    min-height: 50vh;
+
+    ul {
+        justify-content: space-evenly;
+    }
+
+    table {
+        width: 100%;
+        margin-bottom: 2em;
+        border-spacing: 0;
+        color: rgb(70, 72, 74);
+
+        th {
+            border-bottom: 1px solid rgb(223, 225, 229);
+            padding-top: .25em;
+        }
+
+        img {
+            width: 50px;
+        }
+
+        span {
+            &:nth-child(1) {
+                color: rgb(232, 186, 45);
+            }
+            &:nth-child(2) {
+                margin-left: .5em;
+                color: rgb(220, 53, 69);
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
