@@ -18,7 +18,7 @@ class AdminController extends Controller
             header('Location: /main/forbidden');
             exit;
         }
-        $user = $_SESSION['user'];
+        $currentUser = $_SESSION['user'];
 
         //Récupération des articles
         $postModel = new PostModel;
@@ -39,14 +39,14 @@ class AdminController extends Controller
         $users = $userModel->findAll();
 
         foreach($users as $user) {
-            $nbMessages = COUNT($userModel->getPosts($user->id));
+            $nbArticles = COUNT($userModel->getPosts($user->id));
             $nbComments = COUNT($userModel->getComments($user->id));
-            $user->messages = $nbMessages;
+            $user->articles = $nbArticles;
             $user->comments = $nbComments;
         }
 
         $this->twig->display('admin/index.html.twig', [
-            'user' => $user,
+            'user' => $currentUser,
             'posts' => $posts,
             'comments' => $comments,
             'users' => $users

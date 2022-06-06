@@ -41,7 +41,7 @@
                     <div class="author-info">
                         <h4>A propos de l'auteur :</h4>
                         <img src="/uploads/{{ author.avatar }}" alt="">
-                        <p>{{ author.firstname }} {{ user.lastname }}</p>
+                        <p><a href="/user/show/{{ author.id }}">{{ author.firstname }} {{ author.lastname }}</a></p>
                         <p>{{ author.hook }}</p>
                         <div>
                             <p>Messages : {{ userPosts }}</p>

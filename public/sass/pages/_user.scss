@@ -96,5 +96,138 @@ main.visible {
         }
     }
 
+    .profile {
+        width: 75%;
+
+        .user-info {
+            width: 25%;
+            height: 400px;
+            margin-left: 2em;
+            margin-bottom: 2em;
+            border: 1px solid rgb(223, 225, 229);
+            border-radius: .3rem;
+            text-align: center;
+            float: right;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+    
+            h4 {
+                margin: .5em 0 0;
+                color: rgb(70, 72, 74);
+                font-size: 1rem;
+                font-weight: 700;
+                text-transform: uppercase;
+            }
+            img {
+                width: 50%;
+            }
+            p {
+                margin: .5em 0;
+    
+                &:nth-child(3) {
+                    text-transform: uppercase;
+                    font-weight: 300;
+                }
+                &:nth-child(4) {
+                    margin: -.5em;
+                    color: rgb(105, 107, 110);
+                    font-size: .9rem;
+                    font-weight: 200;
+                }
+            }
+            div p {
+                color: rgb(70, 72, 74);
+            }
+            a {
+                display: block;
+                margin: .5em;
+                color: rgb(232, 186, 45);
+                text-decoration: none;
+                &:hover {
+                    color: rgb(0, 86, 179);
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .table-container {
+            width: 70%;
+            &:nth-child(2) {
+                width: 100%;
+                h3 {
+                    width: 100%;
+                    display: inline-block;
+                }
+            }
+
+            h3 {
+                margin: 1em 0;
+                color: rgb(70, 72, 74);
+                font-size: 2rem;
+                font-weight: 500;
+                text-transform: uppercase;
+                text-align: center;
+            }
+
+            p {
+                text-align: center;
+                margin-bottom: 2em;
+            }
+
+            table {
+                width: 100%;
+                margin-bottom: 2em;
+                border-spacing: 0;
+                color: rgb(70, 72, 74);
+        
+                tr:nth-child(1) th {
+                    padding-bottom: .5em;
+                }
+        
+                tr:not(:nth-child(1)) th {
+                    font-weight: 400;
+                }
+        
+                th {
+                    border-bottom: 1px solid rgb(223, 225, 229);
+                    padding-top: .25em;
+                }
+        
+                a {
+                    color: rgb(70, 72, 74);
+                    font-weight: 700;
+                    text-decoration: none;
+                    &:hover {
+                        color: rgb(232, 186, 45);
+                        text-decoration: underline;
+                    }
+                }
+        
+                img {
+                    width: 50px;
+                    &.p5 {
+                        padding: .522em 0;
+                    }
+                }
+        
+                span {
+                    &.fa-pen-to-square {
+                        color: rgb(232, 186, 45);
+                    }
+                    &.fa-trash-can {
+                        color: rgb(220, 53, 69);
+                        &:hover {
+                            cursor: pointer;
+                        }
+                        &.m5 {
+                            margin-left: .5em;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
     

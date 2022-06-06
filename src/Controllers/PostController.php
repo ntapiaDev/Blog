@@ -295,6 +295,11 @@ class PostController extends Controller
 
         $post = $postModel->findOneBySlug($slug);
 
+        if(!$post) {
+            header('Location: /main/notfound');
+            exit;
+        }
+
         if(!isset($_SESSION['user']) || $post->user !== $_SESSION['user']['id'] && $_SESSION['user']['roles'] !== 'ROLE_ADMIN') {
             header('Location: /main/forbidden');
             exit;
@@ -302,6 +307,27 @@ class PostController extends Controller
 
         $postModel->delete($post->id);
         $_SERVER['HTTP_REFERER'] === 'http://blog/admin' ? header('Location: '. $_SERVER['HTTP_REFERER']) : header('Location: /#destinations');
+        exit;
+    }
+
+    public function deleteComment($id)
+    {
+        $commentModel = new CommentModel;
+
+        $comment = $commentModel->find($id);
+
+        if(!$comment) {
+            header('Location: /main/notfound');
+            exit;
+        }
+
+        if(!isset($_SESSION['user']) || $_SESSION['user']['roles'] !== 'ROLE_ADMIN') {
+            header('Location: /main/forbidden');
+            exit;
+        }
+
+        $commentModel->delete($comment->id);
+        header('Location: '. $_SERVER['HTTP_REFERER']);
         exit;
     }
 }

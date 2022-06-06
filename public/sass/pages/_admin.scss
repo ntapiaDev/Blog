@@ -6,6 +6,13 @@
         justify-content: space-evenly;
     }
 
+    article {
+        display: none;
+        &.visible {
+            display: block;
+        }
+    }
+
     table {
         width: 100%;
         margin-bottom: 2em;
@@ -37,6 +44,9 @@
 
         img {
             width: 50px;
+            &.p5 {
+                padding: .522em 0;
+            }
         }
 
         span {

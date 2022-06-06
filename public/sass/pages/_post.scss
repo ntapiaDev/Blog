@@ -155,6 +155,15 @@
         img {
             width: 50%;
         }
+        a {
+            color: rgb(70, 72, 74);
+            font-weight: 700;
+            text-decoration: none;
+            &:hover {
+                color: rgb(232, 186, 45);
+                text-decoration: underline;
+            }
+        }
         p {
             margin: .5em 0;
 

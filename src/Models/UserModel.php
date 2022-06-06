@@ -51,6 +51,11 @@ Class UserModel extends Model
         return $this->request("SELECT * FROM post WHERE user = ?", [$id])->fetchAll();
     }
 
+    public function getPostsWithDetails(int $id): array
+    {
+        return $this->request("SELECT p.*, DATE_FORMAT(p.created_at, '%d/%m/%Y à %Hh%i') as formated_created_at, c.type as category_name FROM post p INNER JOIN category c ON p.category = c.id WHERE p.user = ?", [$id])->fetchAll();
+    }
+
     /**
      * Récupère la liste des commentaires d'un utilisateur
      *
@@ -60,6 +65,11 @@ Class UserModel extends Model
     public function getComments(int $id): array
     {
         return $this->request("SELECT * FROM comment WHERE user = ?", [$id])->fetchAll();
+    }
+
+    public function getCommentsWithDetails(int $id): array
+    {
+        return $this->request("SELECT c.*, DATE_FORMAT(c.created_at, '%d/%m/%Y à %Hh%i') as formated_created_at, p.title, p.slug, p.image FROM comment c INNER JOIN post p ON c.post = p.id WHERE c.user = ?", [$id])->fetchAll();
     }
 
     /**

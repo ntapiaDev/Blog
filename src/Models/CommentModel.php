@@ -40,7 +40,7 @@ Class CommentModel extends Model
      */
     public function findAllWithDetails()
     {
-        $query = $this->request("SELECT c.*, DATE_FORMAT(c.created_at, '%d/%m/%Y à %Hh%i') as formated_created_at, u.firstname, u.lastname, u.avatar, p.title, p.slug FROM $this->table c INNER JOIN user u ON c.user = u.id INNER JOIN post p ON c.post = p.id");
+        $query = $this->request("SELECT c.*, DATE_FORMAT(c.created_at, '%d/%m/%Y à %Hh%i') as formated_created_at, u.firstname, u.lastname, u.avatar, u.id as user_id, p.title, p.slug FROM $this->table c INNER JOIN user u ON c.user = u.id INNER JOIN post p ON c.post = p.id");
         return $query->fetchAll();
     }
 

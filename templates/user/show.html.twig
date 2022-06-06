@@ -1,0 +1,105 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Profil de {{ userShown.firstname }} {{ userShown.lastname }}{% endblock %}
+
+{% block javascript %}
+    <script src="/js/user.js" defer></script>
+{% endblock %}
+
+{% block body %}
+    <main class="visible">
+        <section>
+            <h2>Profil de {{ userShown.firstname }} {{ userShown.lastname }}</h2>
+            <div class="profile">
+                <div class="user-info">
+                    <h4>Informations :</h4>
+                    <img src="/uploads/{{ userShown.avatar }}" alt="">
+                    <p>{{ userShown.firstname }} {{ userShown.lastname }}</p>
+                    <p>{{ userShown.hook }}</p>
+                    <div>
+                        <p>Messages : {{ posts|length }}</p>
+                        <p>Commentaires : <span>{{ comments|length }}</span></p>
+                        {% if user.id == userShown.id or user.roles == 'ROLE_ADMIN' %}
+                            <a href="/user/edit/{{ user.id }}">Éditer le profil</a>
+                        {% endif %}
+                        {% if user.id == userShown.id %}
+                            <a href="/user/logout">Se déconnecter</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="historique">
+                    <div class="table-container">
+                        <h3>Liste des articles</h3>
+                        {% if posts|length > 0 %}
+                            <table>
+                                <tr>
+                                    <th></th>
+                                    <th>Titre</th>
+                                    <th>Accroche</th>
+                                    <th>Catégorie</th>
+                                    <th>Commentaires</th>
+                                    <th>Date</th>
+                                    {% if user.roles == 'ROLE_ADMIN' %}
+                                        <th>Action</th>
+                                    {% endif %}
+                                </tr>
+                                {% for post in posts %}
+                                    <tr>
+                                        <th><img src="/uploads/{{ post.image }}" alt="{{ post.title }}" class="p5"></th>
+                                        <th><a href="/post/show/{{ post.slug }}">{{ post.title }}</a></th>
+                                        <th>{{ post.hook }}</th>
+                                        <th>{{ post.category_name }}</th>
+                                        <th>{{ post.comments }}</th>
+                                        <th>{{ post.formated_created_at }}</th>
+                                        {% if user.roles == 'ROLE_ADMIN' %}
+                                            <th><a href="/post/edit/{{ post.slug }}"><span class="fa-solid fa-pen-to-square"></span></a><span class="fa-solid fa-trash-can m5" data-slug={{ post.slug }} data-target="post"></span></th>
+                                        {% endif %}
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        {% else %}
+                            <p>Cet utilisateur n'a pas encore posté d'article.</p>
+                        {% endif %}
+                    </div>
+                    <div class="table-container">
+                        <h3>Liste des commentaires</h3>
+                        {% if comments|length > 0 %}
+                            <table>
+                                <tr>
+                                    <th></th>
+                                    <th>Article</th>
+                                    <th>Commentaire</th>
+                                    <th>Date</th>
+                                    {% if user.roles == 'ROLE_ADMIN' %}
+                                        <th>Action</th>
+                                    {% endif %}
+                                </tr>
+                                {% for comment in comments %}
+                                    <tr>
+                                        <th><img src="/uploads/{{ comment.image }}" alt="{{ comment.title }}"></th>
+                                        <th><a href="/post/show/{{ comment.slug }}#comments">{{ comment.title }}</a></th>
+                                        <th>{{ comment.comment }}</th>
+                                        <th>{{ comment.formated_created_at }}</th>
+                                        {% if user.roles == 'ROLE_ADMIN' %}
+                                            <th><span class="fa-solid fa-trash-can" data-id={{ comment.id }} data-target="comment"></span></th>
+                                        {% endif %}
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        {% else %}
+                            <p>Cet utilisateur n'a pas encore posté de commentaire.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <aside class="modale">
+            <div class="modale-container">
+                <p>Voulez-vous vraiment supprimer cet article ?</p>
+                <div>
+                    <a href="">Oui</a><p class="abord">Annuler</p>
+                </div>
+            </div>
+        </aside>
+    </main>
+{% endblock %}

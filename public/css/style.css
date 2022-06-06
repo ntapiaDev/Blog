@@ -166,6 +166,14 @@ footer section .container ul li:hover {
           justify-content: space-evenly;
 }
 
+.admin-container article {
+  display: none;
+}
+
+.admin-container article.visible {
+  display: block;
+}
+
 .admin-container table {
   width: 100%;
   margin-bottom: 2em;
@@ -199,6 +207,10 @@ footer section .container ul li:hover {
 
 .admin-container table img {
   width: 50px;
+}
+
+.admin-container table img.p5 {
+  padding: .522em 0;
 }
 
 .admin-container table span.fa-pen-to-square {
@@ -967,6 +979,17 @@ main section .contact-container ul li:hover {
   width: 50%;
 }
 
+.show-container .author-info a {
+  color: #46484a;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.show-container .author-info a:hover {
+  color: #e8ba2d;
+  text-decoration: underline;
+}
+
 .show-container .author-info p {
   margin: .5em 0;
 }
@@ -1395,5 +1418,158 @@ main.visible .user-container .user-form button {
 main.visible .user-container .user-form button:hover {
   cursor: pointer;
   background-color: #d5a523;
+}
+
+main.visible .profile {
+  width: 75%;
+}
+
+main.visible .profile .user-info {
+  width: 25%;
+  height: 400px;
+  margin-left: 2em;
+  margin-bottom: 2em;
+  border: 1px solid #dfe1e5;
+  border-radius: .3rem;
+  text-align: center;
+  float: right;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main.visible .profile .user-info h4 {
+  margin: .5em 0 0;
+  color: #46484a;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+main.visible .profile .user-info img {
+  width: 50%;
+}
+
+main.visible .profile .user-info p {
+  margin: .5em 0;
+}
+
+main.visible .profile .user-info p:nth-child(3) {
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+main.visible .profile .user-info p:nth-child(4) {
+  margin: -.5em;
+  color: #696b6e;
+  font-size: .9rem;
+  font-weight: 200;
+}
+
+main.visible .profile .user-info div p {
+  color: #46484a;
+}
+
+main.visible .profile .user-info a {
+  display: block;
+  margin: .5em;
+  color: #e8ba2d;
+  text-decoration: none;
+}
+
+main.visible .profile .user-info a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+main.visible .profile .table-container {
+  width: 70%;
+}
+
+main.visible .profile .table-container:nth-child(2) {
+  width: 100%;
+}
+
+main.visible .profile .table-container:nth-child(2) h3 {
+  width: 100%;
+  display: inline-block;
+}
+
+main.visible .profile .table-container h3 {
+  margin: 1em 0;
+  color: #46484a;
+  font-size: 2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+main.visible .profile .table-container p {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+main.visible .profile .table-container table {
+  width: 100%;
+  margin-bottom: 2em;
+  border-spacing: 0;
+  color: #46484a;
+}
+
+main.visible .profile .table-container table tr:nth-child(1) th {
+  padding-bottom: .5em;
+}
+
+main.visible .profile .table-container table tr:not(:nth-child(1)) th {
+  font-weight: 400;
+}
+
+main.visible .profile .table-container table th {
+  border-bottom: 1px solid #dfe1e5;
+  padding-top: .25em;
+}
+
+main.visible .profile .table-container table a {
+  color: #46484a;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+main.visible .profile .table-container table a:hover {
+  color: #e8ba2d;
+  text-decoration: underline;
+}
+
+main.visible .profile .table-container table img {
+  width: 50px;
+}
+
+main.visible .profile .table-container table img.p5 {
+  padding: .522em 0;
+}
+
+main.visible .profile .table-container table span.fa-pen-to-square {
+  color: #e8ba2d;
+}
+
+main.visible .profile .table-container table span.fa-trash-can {
+  color: #dc3545;
+}
+
+main.visible .profile .table-container table span.fa-trash-can:hover {
+  cursor: pointer;
+}
+
+main.visible .profile .table-container table span.fa-trash-can.m5 {
+  margin-left: .5em;
 }
 /*# sourceMappingURL=style.css.map */

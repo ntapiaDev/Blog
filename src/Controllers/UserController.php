@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Core\Form;
+use App\Models\CommentModel;
 use App\Models\UserModel;
 
 class UserController extends Controller
@@ -17,13 +18,49 @@ class UserController extends Controller
         if(!isset($_SESSION['user'])) {
             header('Location: /user/login');
             exit;
+        } else {
+            header('Location: /user/show/' . $_SESSION['user']['id']);
+        }
+
+        // $userModel = new UserModel;
+        // $user = $userModel->findOneById($_SESSION['user']['id']);
+
+        // $this->twig->display('user/index.html.twig', [
+        //     'user' => $user
+        // ]);
+    }
+
+    public function show(int $id)
+    {
+        if(isset($_SESSION['user'])) {
+            $currentUser = $_SESSION['user'];
+        } else {
+            $currentUser = [];
         }
 
         $userModel = new UserModel;
-        $user = $userModel->findOneById($_SESSION['user']['id']);
+        $user = $userModel->find($id);
 
-        $this->twig->display('user/index.html.twig', [
-            'user' => $user
+        if(!$user) {
+            header('Location: /main/notfound');
+            exit;
+        }
+
+        $posts = $userModel->getPostsWithDetails($id);
+
+        $commentModel = new CommentModel;
+        foreach($posts as $post) {
+            $comments = COUNT($commentModel->findAllByPostId($post->id));
+            $post->comments = $comments;
+        }
+
+        $comments = $userModel->getCommentsWithDetails($id);
+
+        $this->twig->display('user/show.html.twig', [
+            'userShown' => $user,
+            'posts' => $posts,
+            'comments' => $comments,
+            'user' => $currentUser
         ]);
     }
 
