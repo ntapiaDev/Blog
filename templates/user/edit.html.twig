@@ -5,12 +5,12 @@
 {% block body %}
     <main class="visible">
         <section>
-            <h2>Édition du profil</h2>
+            <h2>Édition du profil de {{ editedUser.firstname }} {{ editedUser.lastname }}</h2>
             <div class="user-container">
                 <div class="user-info">
                     <img src="/uploads/{{ editedUser.avatar }}" alt="">
                     <h4>Annuler les modifications ?</h4>
-                    <p><a href="/user">Revenir au profil</a></p>
+                    <p><a href="/user/show/{{ editedUser.id }}">Revenir au profil</a></p>
                 </div>
                 <div class="user-form">
                     {{ editForm|raw }}

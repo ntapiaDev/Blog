@@ -80,7 +80,7 @@ class UserController extends Controller
             exit;
         }
 
-        if(!isset($_SESSION['user']) || $_SESSION['user']['roles'] !== 'ROLE_ADMIN') {
+        if(!isset($_SESSION['user']) || $user->id !== $_SESSION['user']['id'] && $_SESSION['user']['roles'] !== 'ROLE_ADMIN') {
             header('Location: /main/forbidden');
             exit;
         }
@@ -141,6 +141,27 @@ class UserController extends Controller
             'message' => isset($_SESSION['erreur']) ? $_SESSION['erreur'] : ''
         ]);
         unset($_SESSION['erreur']);
+    }
+
+    public function delete($id)
+    {
+        $userModel = new UserModel;
+
+        $user = $userModel->find($id);
+
+        if(!$user) {
+            header('Location: /main/notfound');
+            exit;
+        }
+
+        if(!isset($_SESSION['user']) || $_SESSION['user']['roles'] !== 'ROLE_ADMIN') {
+            header('Location: /main/forbidden');
+            exit;
+        }
+
+        $userModel->delete($user->id);
+        $_SERVER['HTTP_REFERER'] === 'http://blog/admin' ? header('Location: '. $_SERVER['HTTP_REFERER']) : header('Location: /');
+        exit;
     }
 
     /**
