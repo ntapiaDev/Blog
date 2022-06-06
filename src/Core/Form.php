@@ -44,8 +44,10 @@ Class Form
                     $userArray = $userModel->findOneByEmail(strip_tags($_POST['email']));
             
                     if($userArray) {
-                        $_SESSION['erreur'] = 'Cette adresse email est déjà utilisée.';
-                        return false;
+                        if($_SESSION['user']['email'] !== $userArray->email && $_SESSION['user']['roles'] !== 'ROLE_ADMIN') {
+                            $_SESSION['erreur'] = 'Cette adresse email est déjà utilisée.';
+                            return false;
+                        }
                     }
                 }
             }

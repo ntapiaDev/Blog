@@ -85,7 +85,7 @@
                                 <th>{{ user.articles }}</th>
                                 <th>{{ user.comments }}</th>
                                 <th>{{ user.roles }}</th>
-                                <th><a href=""><span class="fa-solid fa-pen-to-square"></span></a><span class="fa-solid fa-trash-can m5" data-id={{ user.id }} data-target="user"></span></th>
+                                <th><a href="/user/edit/{{ user.id }}"><span class="fa-solid fa-pen-to-square"></span></a><span class="fa-solid fa-trash-can m5" data-id={{ user.id }} data-target="user"></span></th>
                             </tr>
                         {% endfor %}
                     </table>

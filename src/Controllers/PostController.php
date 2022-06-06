@@ -232,7 +232,7 @@ class PostController extends Controller
         $content = isset($_POST['content']) ? $_POST['content'] : $post->content;
         $category = isset($_POST['category']) ? $_POST['category'] : $post->category;
         if(!empty($_POST)) {
-            if(Form::validate($_POST, ['title', 'hook', 'category', 'content']) && $_FILES['image']['name'] === '' || Form::validate($_FILES, ['image'])) {
+            if(Form::validate($_POST, ['title', 'hook', 'category', 'content']) && ($_FILES['image']['name'] === '' || Form::validate($_FILES, ['image']))) {
 
                 $newPost = new PostModel;
                 $newPost->setId($post->id)

@@ -30,6 +30,12 @@ class UserController extends Controller
         // ]);
     }
 
+    /**
+     * Affiche la page d'un utilisateur
+     *
+     * @param integer $id de l'utilisateur recherché, par défaut l'id de l'utilisateur connecté
+     * @return void
+     */
     public function show(int $id)
     {
         if(isset($_SESSION['user'])) {
@@ -62,6 +68,79 @@ class UserController extends Controller
             'comments' => $comments,
             'user' => $currentUser
         ]);
+    }
+
+    public function edit(int $id)
+    {
+        $userModel = new UserModel;
+        $user = $userModel->find($id);
+
+        if(!$user) {
+            header('Location: /main/notfound');
+            exit;
+        }
+
+        if(!isset($_SESSION['user']) || $_SESSION['user']['roles'] !== 'ROLE_ADMIN') {
+            header('Location: /main/forbidden');
+            exit;
+        }
+        $currentUser = $_SESSION['user'];
+
+        $email = isset($_POST['email']) ? strip_tags($_POST['email']) : $user->email;
+        $firstname = isset($_POST['firstname']) ? strip_tags($_POST['firstname']) : $user->firstname;
+        $lastname = isset($_POST['lastname']) ? strip_tags($_POST['lastname']) : $user->lastname;
+        $hook = isset($_POST['hook']) ? strip_tags($_POST['hook']) : $user->hook;
+        if(!empty($_POST)) {
+            if(Form::validate($_POST, ['email', 'firstname', 'lastname']) && ($_FILES['image']['name'] === '' || Form::validate($_FILES, ['image']))) {                
+                $editedUser = new UserModel;
+                $editedUser->setId($user->id)
+                    ->setEmail($email)
+                    ->setFirstname($firstname)
+                    ->setLastname($lastname);
+
+                if(!empty($_POST['hook'])) {
+                    $hook = strip_tags($_POST['hook']);
+                    $editedUser->setHook($hook);
+                }
+
+                if($_FILES['image']['name'] !== '') {
+                    $upload_dir = ROOT . '/public/uploads/';
+                    $ext = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
+                    $file_name = basename(md5(rand()) . '.' . $ext);
+                    $upload_file = $upload_dir . $file_name;
+                    move_uploaded_file($_FILES["image"]["tmp_name"], $upload_file);
+                    $editedUser->setAvatar($file_name);
+                }
+    
+                $editedUser->update();
+                $_SESSION['user']['roles'] === 'ROLE_ADMIN' ? header('Location: /admin') : header('Location: /user');
+                exit;
+            }
+        }
+
+        $form = new Form;
+
+        $form->debutForm('post', '#', ['enctype' => 'multipart/form-data'])
+            ->ajoutLabelFor('firstname', 'Votre prénom :')
+            ->ajoutInput('text', 'firstname', ['id' => 'firstname', 'class' => '', 'placeholder' => 'Prénom', 'value' => $firstname])
+            ->ajoutLabelFor('lastname', 'Votre nom :')
+            ->ajoutInput('text', 'lastname', ['id' => 'lastname', 'class' => '', 'placeholder' => 'Nom', 'value' => $lastname])
+            ->ajoutLabelFor('avatar', 'Votre avatar :')
+            ->ajoutInput('file', 'image', ['id' => 'avatar', 'class' => '',  'accept' => "image/gif, image/jpeg, image/png"])
+            ->ajoutLabelFor('hook', 'Votre accroche :')
+            ->ajoutInput('text', 'hook', ['id' => 'hook', 'class' => '', 'placeholder' => 'Accroche', 'value' => $hook])
+            ->ajoutLabelFor('email', 'Votre email :')
+            ->ajoutInput('email', 'email', ['id' => 'email', 'class' => '', 'placeholder' => 'Adresse email', 'value' => $email])
+            ->ajoutBouton('Mettre à jour', ['class' => ''])
+            ->finForm();
+
+        $this->twig->display('user/edit.html.twig', [
+            'user' => $currentUser,
+            'editedUser' => $user,
+            'editForm' => $form->create(),
+            'message' => isset($_SESSION['erreur']) ? $_SESSION['erreur'] : ''
+        ]);
+        unset($_SESSION['erreur']);
     }
 
     /**
@@ -202,7 +281,8 @@ class UserController extends Controller
      */
     public function logout() {
         unset($_SESSION['user']);
-        header('Location: '. $_SERVER['HTTP_REFERER']);
+        header('Location: /user');
+        // header('Location: '. $_SERVER['HTTP_REFERER']);
         exit;
     }
 }
