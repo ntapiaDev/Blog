@@ -20,7 +20,7 @@
                         <p>Messages : {{ posts|length }}</p>
                         <p>Commentaires : <span>{{ comments|length }}</span></p>
                         {% if user.id == userShown.id or user.roles == 'ROLE_ADMIN' %}
-                            <a href="/user/edit/{{ user.id }}">Éditer le profil</a>
+                            <a href="/user/edit/{{ userShown.id }}">Éditer le profil</a>
                         {% endif %}
                         {% if user.id == userShown.id %}
                             <a href="/user/logout">Se déconnecter</a>
@@ -39,7 +39,7 @@
                                     <th>Catégorie</th>
                                     <th>Commentaires</th>
                                     <th>Date</th>
-                                    {% if user.roles == 'ROLE_ADMIN' %}
+                                    {% if user.id == posts[0].user or user.roles == 'ROLE_ADMIN' %}
                                         <th>Action</th>
                                     {% endif %}
                                 </tr>
@@ -51,8 +51,8 @@
                                         <th>{{ post.category_name }}</th>
                                         <th>{{ post.comments }}</th>
                                         <th>{{ post.formated_created_at }}</th>
-                                        {% if user.roles == 'ROLE_ADMIN' %}
-                                            <th><a href="/post/edit/{{ post.slug }}"><span class="fa-solid fa-pen-to-square"></span></a><span class="fa-solid fa-trash-can m5" data-slug={{ post.slug }} data-target="post"></span></th>
+                                        {% if user.id == post.user or user.roles == 'ROLE_ADMIN' %}
+                                            <th><a href="/post/edit/{{ post.slug }}"><span class="fa-solid fa-pen-to-square"></span></a>{% if user.roles == 'ROLE_ADMIN' %}<span class="fa-solid fa-trash-can m5" data-slug={{ post.slug }} data-target="post"></span>{% endif %}</th>
                                         {% endif %}
                                     </tr>
                                 {% endfor %}

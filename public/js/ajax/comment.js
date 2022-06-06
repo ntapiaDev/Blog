@@ -1,4 +1,7 @@
 window.onload = () => {
+    if(!document.querySelector('.comment-btn')) {
+        return;
+    }
     const btn = document.querySelector('.comment-btn');
     btn.addEventListener('click', comment);
 
