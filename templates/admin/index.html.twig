@@ -12,11 +12,11 @@
             <h2>Administration</h2>
             <div class="admin-container">
                 <ul>
-                    <li>Articles</li>
+                    <li class="active">Articles</li>
                     <li>Commentaires</li>
                     <li>Utilisateurs</li>
                 </ul>
-                <article class="posts">
+                <article class="posts-list">
                     <table>
                         <tr>
                             <th></th>
@@ -37,13 +37,57 @@
                                 <th>{{ post.firstname }} {{ post.lastname }}</th>
                                 <th>{{ post.comments }}</th>
                                 <th>{{ post.formated_created_at }}</th>
-                                <th><a href="/post/edit/{{ post.slug }}"><span class="fa-solid fa-pen-to-square"></span></a><span class="fa-solid fa-trash-can" data-slug={{ post.slug }}></span></th>
+                                <th><a href="/post/edit/{{ post.slug }}"><span class="fa-solid fa-pen-to-square"></span></a><span class="fa-solid fa-trash-can m5" data-slug={{ post.slug }}></span></th>
                             </tr>
                         {% endfor %}
                     </table>
                 </article>
-                <article class="comments"></article>
-                <article class="users"></article>
+                <article class="comments-list">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Article</th>
+                            <th>Commentaire</th>
+                            <th>Auteur</th>
+                            <th>Date de création</th>
+                            <th>Action</th>
+                        </tr>
+                        {% for comment in comments %}
+                            <tr>
+                                <th><img src="/uploads/{{ comment.avatar }}" alt="{{ comment.firtname }} {{ comment.lastname }}"></th>
+                                <th><a href="/post/show/{{ comment.slug }}#comments">{{ comment.title }}</a></th>
+                                <th>{{ comment.comment }}</th>
+                                <th>{{ comment.firstname }} {{ comment.lastname }}</th>
+                                <th>{{ comment.formated_created_at }}</th>
+                                <th><span class="fa-solid fa-trash-can" data=""></span></th>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </article>
+                <article class="users-list">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Prénom</th>
+                            <th>Nom</th>
+                            <th>Accroche</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Action</th>
+                        </tr>
+                        {% for user in users %}
+                            <tr>
+                                <th><img src="/uploads/{{ user.avatar }}" alt="{{ user.firtname }} {{ user.lastname }}"></th>
+                                <th>{{ user.firstname }}</th>
+                                <th>{{ user.lastname }}</th>
+                                <th>{{ user.hook }}</th>
+                                <th>{{ user.email }}</th>
+                                <th>{{ user.roles }}</th>
+                                <th><a href=""><span class="fa-solid fa-pen-to-square"></span></a><span class="fa-solid fa-trash-can m5" data=""></span></th>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </article>
             </div>
         </section>
         <aside class="modale">

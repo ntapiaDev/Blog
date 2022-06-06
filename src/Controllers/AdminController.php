@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use App\Models\CommentModel;
 use App\Models\PostModel;
+use App\Models\UserModel;
 
 class AdminController extends Controller
 {
@@ -19,6 +20,7 @@ class AdminController extends Controller
         }
         $user = $_SESSION['user'];
 
+        //Récupération des articles
         $postModel = new PostModel;
         $posts = $postModel->findAllWithDetails();
 
@@ -28,9 +30,26 @@ class AdminController extends Controller
             $post->comments = $comments;
         }
 
+        //Récupération des commentaires
+        $commentModel = new CommentModel;
+        $comments = $commentModel->findAllWithDetails();
+
+        //Récupération des utilisateurs
+        $userModel = new UserModel;
+        $users = $userModel->findAll();
+
+        foreach($users as $user) {
+            $nbMessages = COUNT($userModel->getPosts($user->id));
+            $nbComments = COUNT($userModel->getComments($user->id));
+            $user->messages = $nbMessages;
+            $user->comments = $nbComments;
+        }
+
         $this->twig->display('admin/index.html.twig', [
             'user' => $user,
-            'posts' => $posts
+            'posts' => $posts,
+            'comments' => $comments,
+            'users' => $users
         ]);
     }
 }

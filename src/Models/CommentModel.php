@@ -34,6 +34,17 @@ Class CommentModel extends Model
     }
 
     /**
+     * Récupère tous les commentaires avec les données d'article et d'utilisateur
+     *
+     * @return void
+     */
+    public function findAllWithDetails()
+    {
+        $query = $this->request("SELECT c.*, DATE_FORMAT(c.created_at, '%d/%m/%Y à %Hh%i') as formated_created_at, u.firstname, u.lastname, u.avatar, p.title, p.slug FROM $this->table c INNER JOIN user u ON c.user = u.id INNER JOIN post p ON c.post = p.id");
+        return $query->fetchAll();
+    }
+
+    /**
      * Get the value of id
      */ 
     public function getId()

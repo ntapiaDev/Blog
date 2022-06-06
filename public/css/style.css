@@ -173,26 +173,48 @@ footer section .container ul li:hover {
   color: #46484a;
 }
 
+.admin-container table tr:nth-child(1) th {
+  padding-bottom: .5em;
+}
+
+.admin-container table tr:not(:nth-child(1)) th {
+  font-weight: 400;
+}
+
 .admin-container table th {
   border-bottom: 1px solid #dfe1e5;
   padding-top: .25em;
+}
+
+.admin-container table a {
+  color: #46484a;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.admin-container table a:hover {
+  color: #e8ba2d;
+  text-decoration: underline;
 }
 
 .admin-container table img {
   width: 50px;
 }
 
-.admin-container table span:nth-child(1) {
+.admin-container table span.fa-pen-to-square {
   color: #e8ba2d;
 }
 
-.admin-container table span:nth-child(2) {
-  margin-left: .5em;
+.admin-container table span.fa-trash-can {
   color: #dc3545;
 }
 
-.admin-container table span:nth-child(2):hover {
+.admin-container table span.fa-trash-can:hover {
   cursor: pointer;
+}
+
+.admin-container table span.fa-trash-can.m5 {
+  margin-left: .5em;
 }
 
 html {

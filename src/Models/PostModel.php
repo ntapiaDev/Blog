@@ -26,6 +26,11 @@ Class PostModel extends Model
         return $query->fetchAll();
     }
 
+    /**
+     * Récupère tous les articles avec les données de catégorie et d'utilisateur
+     *
+     * @return array
+     */
     public function findAllWithDetails()
     {
         $query = $this->request("SELECT p.*, DATE_FORMAT(p.created_at, '%d/%m/%Y à %Hh%i') as formated_created_at, u.firstname, u.lastname, c.type as category_name FROM $this->table p INNER JOIN user u ON p.user = u.id INNER JOIN category c ON p.category = c.id");
