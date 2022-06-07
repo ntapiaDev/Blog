@@ -1133,6 +1133,18 @@ main section .contact-container ul li:hover {
   margin: 1.5em auto;
 }
 
+.comments .comments-container .comments-list a {
+  color: #46484a;
+  font-weight: 600;
+  width: 20%;
+  text-transform: uppercase;
+}
+
+.comments .comments-container .comments-list a:hover {
+  color: #e8ba2d;
+  text-decoration: underline;
+}
+
 .comments .comments-container .comments-list p {
   margin-bottom: 1em;
   font-size: .5em;
@@ -1153,11 +1165,6 @@ main section .contact-container ul li:hover {
 
 .comments .comments-container .comments-list p span {
   display: inline-block;
-}
-
-.comments .comments-container .comments-list p span:nth-child(2) {
-  width: 20%;
-  text-transform: uppercase;
 }
 
 .comments .comments-container .comments-list p span:nth-child(3) {

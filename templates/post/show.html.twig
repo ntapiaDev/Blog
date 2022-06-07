@@ -89,7 +89,7 @@
                     <div class="comments-list">
                         {% for comment in comments %}
                             <p>
-                                <img src="/uploads/{{ comment.avatar }}" alt=""><span>{{ comment.firstname }} {{ comment.lastname }}</span> le <span>{{ comment.formated_created_at }}</span> : <span>{{ comment.comment }}</span>
+                                <img src="/uploads/{{ comment.avatar }}" alt=""><a href="/user/show/{{ comment.user_id }}"><span class="c-name">{{ comment.firstname }} {{ comment.lastname }}</span></a> le <span>{{ comment.formated_created_at }}</span> : <span>{{ comment.comment }}</span>
                                 {% if userRole == 'ROLE_ADMIN' %}
                                     <span class="delete-btn" data-comment-id="{{ comment.id }}">X</span>
                                 {% endif %}
@@ -116,7 +116,7 @@
         </section>
         <aside class="modale">
             <div class="modale-container">
-                <p>Voulez-vous vraiment supprimer cet article ?</p>
+                <p>Souhaitez-vous confirmer la suppression ?</p>
                 <div>
                     <a href="/post/delete/{{ post.slug }}">Oui</a><p class="abord">Annuler</p>
                 </div>

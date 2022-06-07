@@ -17,7 +17,7 @@ Class CommentModel extends Model
 
     public function findAllByPostId(int $id): array
     {
-        $query = $this->request("SELECT c.*, DATE_FORMAT(c.created_at, '%d/%m/%Y à %Hh%i') as formated_created_at, u.firstname, u.lastname, u.avatar FROM $this->table c INNER JOIN user u ON c.user = u.id WHERE post = ? ORDER BY c.id", [$id]);
+        $query = $this->request("SELECT c.*, DATE_FORMAT(c.created_at, '%d/%m/%Y à %Hh%i') as formated_created_at, u.firstname, u.lastname, u.avatar, u.id as user_id FROM $this->table c INNER JOIN user u ON c.user = u.id WHERE post = ? ORDER BY c.id", [$id]);
         return $query->fetchAll();
     }
 

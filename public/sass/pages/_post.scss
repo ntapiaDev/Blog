@@ -296,6 +296,16 @@
         margin: 1.5em auto;
 
         .comments-list {
+            a {
+                color: rgb(70, 72, 74);
+                font-weight: 600;
+                width: 20%;
+                text-transform: uppercase;
+                &:hover {
+                    color: rgb(232, 186, 45);
+                    text-decoration: underline;
+                }
+            }
             p {
                 margin-bottom: 1em;
                 font-size: .5em;
@@ -309,10 +319,6 @@
                 }
                 span {
                     display: inline-block;
-                    &:nth-child(2) {
-                        width: 20%;
-                        text-transform: uppercase;
-                    }
                     &:nth-child(3) {
                         width: 20%;
                     }
