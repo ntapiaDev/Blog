@@ -97,7 +97,7 @@
                         {% endfor %}
                     <template class="comments-template">
                         <p>
-                            <img src="" alt=""><span></span> le <span></span> : <span></span>
+                            <img src="" alt=""><a href=""><span class="c-name">{{ comment.firstname }} {{ comment.lastname }}</span></a> le <span></span> : <span></span>
                             {% if userRole == 'ROLE_ADMIN' %}
                                 <span class="delete-btn" data-comment-id="">X</span>
                             {% endif %}

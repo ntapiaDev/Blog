@@ -109,6 +109,7 @@ class PostController extends Controller
                 echo json_encode([
                     'code' => '200',
                     'message' => 'Commentaire envoyé',
+                    'user_id' => $currentUser->id,
                     'avatar' => $currentUser->avatar,
                     'user' => $currentUser->firstname . ' ' . $currentUser->lastname,
                     'comment' => strip_tags($_POST['comment']),

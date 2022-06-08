@@ -44,7 +44,8 @@ function comment(e) {
                     const template = document.querySelector('.comments-template');
                     let clone = document.importNode(template.content, true);
                     clone.querySelector('img').src = `/uploads/${response.avatar}`;
-                    clone.querySelector('span:nth-child(2)').textContent = response.user;
+                    clone.querySelector('a:nth-child(2)').href = `/user/show/${response.user_id}`;
+                    clone.querySelector('a:nth-child(2) span').textContent = response.user;
                     now = new Date();
                     clone.querySelector('span:nth-child(3)').textContent = now.toLocaleDateString("fr") + ` à ${now.getHours()}h${now.getMinutes()}`;
                     clone.querySelector('span:nth-child(4)').textContent = response.comment;
